@@ -8,13 +8,15 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MainProfileComponent } from './components/main-profile/main-profile.component';
+import { AsideComponent } from './aside/aside.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProfileComponent,
-    MainProfileComponent
+    MainProfileComponent,
+    AsideComponent
   ],
   imports: [
     BrowserModule,
