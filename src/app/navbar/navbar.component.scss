@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+#logo {
+  height: 3em;
+  width: auto;
+}
+input {
+  height: 3em;
+}
+li {
+  height: 3em;
+}
+svg,
+#profile-pic {
+  height: 1.5em;
+  width: 1.5em;
+}
+#factory {
+  border-left: 1px solid lightgray;
+  margin-left: 1em;
+  padding-left: 0.5em;
+}
+span {
+  font-size: 0.8rem;
+}
+
+img {
+  height: 100%;
+}

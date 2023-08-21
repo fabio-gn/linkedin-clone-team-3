@@ -8,20 +8,26 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ConsigliatoperteComponent } from './components/consigliatoperte/consigliatoperte.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './components/footer/footer.component';
+import { MainProfileComponent } from './components/main-profile/main-profile.component';
+import { AsideComponent } from './aside/aside.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProfileComponent,
-    ConsigliatoperteComponent
+    ConsigliatoperteComponent,
+    FooterComponent,
+    MainProfileComponent,
+    AsideComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    NgbCarouselModule
-
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
