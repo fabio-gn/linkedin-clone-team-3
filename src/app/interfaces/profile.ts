@@ -4,4 +4,5 @@ export interface IProfile {
   email:string;
   bio:string;
   title:string;
+  area:string
 }

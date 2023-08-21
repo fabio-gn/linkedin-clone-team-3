@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MainProfileComponent } from './components/main-profile/main-profile.component';
 import { AsideComponent } from './aside/aside.component';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { AsideComponent } from './aside/aside.component';
     AppComponent,
     HomeComponent,
     ProfileComponent,
+    MainProfileComponent,
     AsideComponent
   ],
   imports: [
