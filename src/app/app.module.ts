@@ -7,12 +7,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MainProfileComponent } from './components/main-profile/main-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    MainProfileComponent
   ],
   imports: [
     BrowserModule,
