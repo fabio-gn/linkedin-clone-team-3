@@ -3,10 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ConsigliatoperteComponent } from './components/consigliatoperte/consigliatoperte.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { ConsigliatoperteComponent } from './components/consigliatoperte/consigl
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    NgbCarouselModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,67 @@
+.scroll-left,
+.scroll-right {
+  background-color: rgba(255, 255, 255, 0.316);
+  border: none;
+
+}
+
+.scroll-left {
+  position: relative;
+  left: -5px;
+  transform: translateY(7rem) scale(150%);
+  z-index: 3;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.496);
+  border-radius: 10rem;
+  color: white;
+  transition: 0.2s;
+}
+
+.scroll-right {
+  position: relative;
+  left: calc(100% - 2.3rem);
+  transform: translateY(7rem) scale(150%);
+  z-index: 3;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.496);
+  border-radius: 10rem;
+  color: white  ;
+  transition: 0.2s;
+}
+.scroll-left:hover,
+.scroll-right:hover {
+  color: rgba(255, 255, 255, 0.642);
+  background: black;
+}
+
+
+/*Firefox */
+.slide {
+  scrollbar-width: 3px;
+  scrollbar-color: #b2b2b2 #000000;
+}
+
+/* Chrome, Edge and Safari */
+.slide::-webkit-scrollbar {
+  height: 5px;
+}
+.slide::-webkit-scrollbar-track {
+  border-radius: 3px;
+  background-color: transparent;
+}
+
+.slide::-webkit-scrollbar-thumb {
+  border-radius: none;
+  background-color: rgba(0, 0, 0, 0.247);
+}
+
+.slide::-webkit-scrollbar-thumb:hover {
+  background-color: lightgrey;
+}
+
+.slide::-webkit-scrollbar-thumb:active {
+  background-color: grey;
+}
+
+
+
