@@ -1,0 +1,14 @@
+$aside-bg-color: gray;
+$card-text-color: black;
+$card-border-radius: 5px;
+$card-border-color: black;
+
+aside {
+  background-color: $aside-bg-color;
+  
+  .card {
+    color: $card-text-color;
+    border-radius: $card-border-radius;
+    border: 1px solid $card-border-color;
+  }
+}
