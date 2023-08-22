@@ -14,6 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MainProfileComponent } from './components/main-profile/main-profile.component';
 import { AsideComponent } from './aside/aside.component';
 import { CollegamentiComponent } from './pages/collegamenti/collegamenti.component';
+import { EsperienzeComponent } from './components/esperienze/esperienze.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CollegamentiComponent } from './pages/collegamenti/collegamenti.compone
     MainProfileComponent,
     AsideComponent,
     NavbarComponent,
-    CollegamentiComponent
+    CollegamentiComponent,
+    EsperienzeComponent
   ],
   imports: [
     BrowserModule,
