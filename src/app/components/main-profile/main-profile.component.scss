@@ -6,6 +6,7 @@ span,a{
 
 #collegamenti{
   text-decoration: none;
+  display: block;
 }
 
 #banner{
@@ -100,4 +101,12 @@ span,a{
 
 #banner{
   position: relative;
+}
+
+#section:hover{
+  background-color: rgba(198, 223, 245, 0.89);
+}
+
+#other:hover{
+  background-color: rgb(227, 227, 228);
 }

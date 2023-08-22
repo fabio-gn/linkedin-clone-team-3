@@ -1,5 +1,6 @@
-<div id="main" class="rounded-2 rounded border">
+<div id="main" class="rounded-3 border">
   <div
+    class="rounded-top-3"
     id="banner"
     [style.backgroundImage]="'url(' + selectedCoverImage + ')'"
     [style.background]="selectedCoverImage ? 'none' : 'gray'"
@@ -72,9 +73,24 @@
       {{ profile.area }} ·
       <span (click)="openModal(infoModal)">Informazioni di contatto</span>
     </p>
-    <a id="collegamenti" routerLink="/collegamenti"
+    <a id="collegamenti" routerLink="/collegamenti" class="mb-3"
       >{{ collegamenti.length }} collegamenti</a
     >
+    <button class="btn btn-primary rounded-pill me-2 px-3 fw-bold">
+      Disponibile per
+    </button>
+    <button
+      id="section"
+      class="btn border border-primary rounded-pill me-2 px-3 fw-bold text-primary"
+    >
+      Aggiungi sezione del profilo
+    </button>
+    <button
+      id="other"
+      class="btn border border-secondary rounded-pill me-2 px-3 fw-bold text-secondary"
+    >
+      Altro
+    </button>
   </div>
 </div>
 
