@@ -11,14 +11,13 @@ import { ServiceService } from 'src/app/service.service';
 })
 export class EsperienzeComponent {
 
-  formData:IExperience = {
+  formData:Partial<IExperience> = {
     role: '',
     company: '',
     startDate: '',
     area: '',
     description: '',
-    _id: '',
-    user: ''
+    endDate: ''
   }
 
   id!:string
@@ -37,14 +36,19 @@ export class EsperienzeComponent {
   form!:FormGroup;
 
   ngOnInit(){
-    this.svc.getMe().subscribe(profile=> this.id = profile._id)
-    this.svc.getExp(this.id).subscribe( exps => this.experiences = exps)
+    this.svc.getMe().subscribe(profile => {
+      this.id = profile._id
+      this.svc.getExp(this.id).subscribe(exps => {
+        this.experiences = exps
+      })
+    })
     this.form = this.fb.group({
       company:this.fb.control(null, [Validators.required]),
       startDate:this.fb.control(null, [Validators.required]),
       area: this.fb.control(null, [Validators.required]),
       description: this.fb.control(null,[Validators.required]),
       role: this.fb.control(null, [Validators.required]),
+      endDate: this.fb.control(null, [Validators.required]),
     })
   }
 
@@ -56,7 +60,7 @@ export class EsperienzeComponent {
    }
 
    register(){
-    this.svc.postExp(this.id).subscribe()
+    this.svc.postExp(this.id, this.formData).subscribe( () => this.modalService.dismissAll())
    }
 
 }

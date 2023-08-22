@@ -5,5 +5,5 @@ export interface IExperience {
   startDate:string;
   description:string;
   area:string;
-  user:string;
+  endDate:string
 }

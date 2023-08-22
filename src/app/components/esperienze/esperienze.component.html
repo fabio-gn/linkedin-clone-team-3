@@ -79,6 +79,15 @@
         >
       </div>
       <div class="mb-3">
+        <label for="endDate" class="form-label">Data di fine</label>
+        <input type="date" class="form-control" formControlName="endDate" />
+        <span
+          *ngIf="!isValid('endDate') && isTouched('endDate')"
+          class="text-danger fst-italic"
+          >Campo richiesto</span
+        >
+      </div>
+      <div class="mb-3">
         <label for="description" class="form-label">Descrizione</label>
         <textarea class="form-control" formControlName="description"></textarea>
         <span
