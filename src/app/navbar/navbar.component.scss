@@ -2,19 +2,70 @@
   box-sizing: border-box;
 }
 #logo {
-  height: 3em;
+  height: 1.5em;
   width: auto;
 }
 input {
-  height: 3em;
+  height: 1.5em;
 }
+#search-input {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: lightgray;
+}
+#mobile-search {
+  border: none !important;
+  background-color: lightgray;
+  &:focus {
+    outline: none;
+  }
+}
+
+#search-input i {
+  font-weight: bold;
+  margin-left: 1em;
+}
+
 li {
-  height: 3em;
+  height: 1.5em;
 }
 svg,
 #profile-pic {
   height: 1.5em;
   width: 1.5em;
+}
+#factory {
+  border-left: 1px solid lightgray;
+  margin-left: 1em;
+  padding-left: 0.5em;
+}
+span {
+  font-size: 0.8rem;
+}
+
+img {
+  height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  #logo {
+    height: 3em;
+    width: auto;
+  }
+  input {
+    height: 3em;
+  }
+  li {
+    height: 3em;
+  }
+  svg {
+    height: 2em;
+    width: 2em;
+  }
+  #profile-pic {
+    height: 1.7em;
+    width: 2em;
+  }
 }
 #factory {
   border-left: 1px solid lightgray;
