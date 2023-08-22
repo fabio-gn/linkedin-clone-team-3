@@ -1,3 +1,4 @@
+import { NavbarComponent } from './navbar/navbar.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -21,7 +22,8 @@ import { AsideComponent } from './aside/aside.component';
     ConsigliatoperteComponent,
     FooterComponent,
     MainProfileComponent,
-    AsideComponent
+    AsideComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
