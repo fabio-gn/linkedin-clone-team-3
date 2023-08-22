@@ -7,9 +7,27 @@ import { Component } from '@angular/core';
 })
 export class ConsigliatoperteComponent {
 
+scrollLeft(){
+
+  let cardsContainer:any = document.getElementById('slide')
+  let x = cardsContainer.scrollLeft;
+
+  cardsContainer.scrollLeft = x - 200;
+  console.log(x)
 
 
+}
 
+scrollRight(){
+
+  
+  let cardsContainer:any = document.getElementById('slide')
+  let x = cardsContainer.scrollLeft;
+
+  cardsContainer.scrollLeft = x + 200;
+  console.log(x)
+
+}
 
   cards = [
   {

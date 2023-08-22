@@ -1,3 +1,10 @@
+#undertext{
+  font-size: 14px;
+}
+h5{
+  margin-bottom: 0;
+  font-size: 16px;
+}
 .scroll-left,
 .scroll-right {
   background-color: rgba(255, 255, 255, 0.316);
@@ -37,16 +44,16 @@
 
 /*Firefox */
 .slide {
-  scrollbar-width: 3px;
+  scrollbar-width: 0px;
   scrollbar-color: #b2b2b2 #000000;
 }
 
 /* Chrome, Edge and Safari */
 .slide::-webkit-scrollbar {
-  height: 5px;
+  height: 0px;
 }
 .slide::-webkit-scrollbar-track {
-  border-radius: 3px;
+  border-radius: 0px;
   background-color: transparent;
 }
 
@@ -62,6 +69,23 @@
 .slide::-webkit-scrollbar-thumb:active {
   background-color: grey;
 }
+#slide{
+  scroll-snap-type: x mandatory;
+}
+.card{
+  scroll-snap-align: start;
+}
+.card-text{
+  font-size: 14px;
+}
+button{
 
 
+  height: 1.6rem;
+  width: 1.6rem;
+}
+.left-chevron{
+  position: relative;
+  left: -6px
+}
 
