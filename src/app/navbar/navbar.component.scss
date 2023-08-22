@@ -16,7 +16,11 @@ input {
 #mobile-search {
   border: none !important;
   background-color: lightgray;
+  &:focus {
+    outline: none;
+  }
 }
+
 #search-input i {
   font-weight: bold;
   margin-left: 1em;
@@ -62,16 +66,16 @@ img {
     height: 1.7em;
     width: 2em;
   }
-  #factory {
-    border-left: 1px solid lightgray;
-    margin-left: 1em;
-    padding-left: 0.5em;
-  }
-  span {
-    font-size: 0.8rem;
-  }
+}
+#factory {
+  border-left: 1px solid lightgray;
+  margin-left: 1em;
+  padding-left: 0.5em;
+}
+span {
+  font-size: 0.8rem;
+}
 
-  img {
-    height: 100%;
-  }
+img {
+  height: 100%;
 }
