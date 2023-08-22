@@ -1,6 +1,6 @@
 <div class="container border rounded mt-3 p-3">
-  <h5 class="">Consigliato per te</h5>
-  <p>solo per te</p>
+  <h5>Consigliato per te</h5>
+  <p id="undertext">solo per te</p>
 
   <div
     class="progress"
@@ -22,14 +22,14 @@
   <div class="container-fluid">
     <section class="slide">
       <div class="container">
-        <button class="scroll-left btn-dark">&lt;</button>
-        <button class="scroll-right btn-dark">&gt;</button>
+        <button  class="scroll-left btn-dark" (click)="scrollLeft()" >&lt;</button>
+        <button  class="scroll-right btn-dark" (click)="scrollRight()">&gt;</button>
         <div
           id="slide"
           class="slide row flex-nowrap overflow-x-scroll gap-3"
           style="scroll-behavior: smooth"
         >
-          <div *ngFor="let card of cards" class="card" style="width: 25rem">
+          <div *ngFor="let card of cards" class="card col-11 col-md-7 col-xl-5" >
             <div class="card-body">
               <div class="d-flex align-items-center">
                 <img [src]="card.imgLink" alt="" />
