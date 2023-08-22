@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainProfileComponent } from './components/main-profile/main-profile.component';
 import { AsideComponent } from './aside/aside.component';
+import { ExperiencesComponent } from './components/experiences/experiences.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AsideComponent } from './aside/aside.component';
     FooterComponent,
     MainProfileComponent,
     AsideComponent,
-    NavbarComponent
+    NavbarComponent,
+    ExperiencesComponent
   ],
   imports: [
     BrowserModule,
