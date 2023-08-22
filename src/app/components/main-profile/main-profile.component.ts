@@ -13,6 +13,7 @@ export class MainProfileComponent {
   profile!:IProfile
   selectedImage!:string
   selectedCoverImage!:string
+  collegamenti!:IProfile[]
 
   constructor(
     private svc: ServiceService,
@@ -21,6 +22,7 @@ export class MainProfileComponent {
 
   ngOnInit(){
     this.svc.getMe().subscribe( profile => this.profile = profile)
+    this.svc.getAll().subscribe( profiles => this.collegamenti = profiles)
   }
 
   openModal(content: any) {

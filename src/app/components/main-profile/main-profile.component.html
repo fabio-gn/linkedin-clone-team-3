@@ -1,5 +1,6 @@
-<div id="main" class="rounded-2 rounded border">
+<div id="main" class="rounded-3 border">
   <div
+    class="rounded-top-3"
     id="banner"
     [style.backgroundImage]="'url(' + selectedCoverImage + ')'"
     [style.background]="selectedCoverImage ? 'none' : 'gray'"
@@ -34,20 +35,21 @@
   <div id="image" class="circle-border">
     <label for="imageInput">
       <div class="circle">
-        <!-- <svg
+        <svg
+          *ngIf="!selectedImage"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
           data-supported-dps="16x16"
           fill="currentColor"
           class="mercado-match"
-          width="16"
-          height="16"
+          width="40"
+          height="40"
           focusable="false"
         >
           <path
             d="M10 9a2 2 0 11-2-2 2 2 0 012 2zm5-2.5V14H1V6.5A2.5 2.5 0 013.5 4h.75L5 2h6l.75 2h.75A2.5 2.5 0 0115 6.5zM11 9a3 3 0 10-3 3 3 3 0 003-3z"
           ></path>
-        </svg> -->
+        </svg>
       </div>
       <input
         id="imageInput"
@@ -55,7 +57,12 @@
         hidden
         (change)="handleImageChange($event)"
       />
-      <img *ngIf="selectedImage" [src]="selectedImage" alt="Selected Image" />
+      <img
+        *ngIf="selectedImage"
+        [src]="selectedImage"
+        alt="Selected Image"
+        class="img-fluid"
+      />
     </label>
   </div>
   <div class="p-3 mt-5">
@@ -66,7 +73,24 @@
       {{ profile.area }} ·
       <span (click)="openModal(infoModal)">Informazioni di contatto</span>
     </p>
-    <p><span>74 collegamenti</span></p>
+    <a id="collegamenti" routerLink="/collegamenti" class="mb-3"
+      >{{ collegamenti.length }} collegamenti</a
+    >
+    <button class="btn btn-primary rounded-pill me-2 px-3 fw-bold">
+      Disponibile per
+    </button>
+    <button
+      id="section"
+      class="btn border border-primary rounded-pill me-2 px-3 fw-bold text-primary"
+    >
+      Aggiungi sezione del profilo
+    </button>
+    <button
+      id="other"
+      class="btn border border-secondary rounded-pill me-2 px-3 fw-bold text-secondary"
+    >
+      Altro
+    </button>
   </div>
 </div>
 
@@ -82,10 +106,28 @@
   </div>
   <div class="modal-body">
     <h5>Informazioni di contatto</h5>
-    <div>
+    <div class="d-flex gap-3">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        data-supported-dps="24x24"
+        fill="currentColor"
+        class="mercado-match mt-1"
+        width="24"
+        height="24"
+        focusable="false"
+      >
+        <path
+          d="M2 4v13a3 3 0 003 3h14a3 3 0 003-3V4zm18 2v1.47l-8 5.33-8-5.33V6zm-1 12H5a1 1 0 01-1-1V8.67L12 14l8-5.33V17a1 1 0 01-1 1z"
+        ></path>
+      </svg>
       <div>
-        <p>Email</p>
-        <p>{{ profile.email }}</p>
+        <p class="m-0 fs-5 fw-bold">Email</p>
+        <a
+          href="mailto:{{ profile.email }}"
+          class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+          >{{ profile.email }}</a
+        >
       </div>
     </div>
   </div>
