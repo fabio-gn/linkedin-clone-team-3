@@ -1,20 +1,50 @@
 <header class="p-3 mb-3 border-bottom">
-  <div class="container">
-    <div
-      class="d-flex gap-3 align-items-center justify-content-center justify-content-lg-start"
-    >
+  <div class="container mx-auto">
+    <div class="d-flex gap-2 align-items-center justify-content-center">
       <a
         href="/"
         class="d-flex align-items-center mb-lg-0 link-body-emphasis text-decoration-none"
       >
         <img id="logo" src="../../assets/img/LI-In-Bug.png" />
       </a>
-      <form class="mb-lg-0 me-lg-3" role="search">
+      <form class="mb-lg-0 me-lg-3 d-none d-lg-block" role="search">
         <input type="search" placeholder="Search..." aria-label="Search" />
       </form>
-      <ul class="nav mb-2 justify-content-center mb-md-0 gap-3">
+      <form
+        class="mb-lg-0 me-lg-3 d-lg-none"
+        role="search"
+        *ngIf="search === true"
+      >
+        <div id="search-input" class="d-flex align-items-center gap-3">
+          <i (click)="searchToggle()" class="bi bi-search"></i>
+          <input
+            id="mobile-search"
+            type="search"
+            placeholder="Cerca"
+            aria-label="Search"
+          />
+        </div>
+      </form>
+      <ul class="nav justify-content-center gap-3">
+        <li class="d-lg-none" (click)="searchToggle()" *ngIf="search !== true">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-search"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+            />
+          </svg>
+          <span class="d-none d-md-block">cerca</span>
+        </li>
+
         <li
           class="d-flex flex-column align-items-center justify-content-between"
+          *ngIf="search !== true"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -31,10 +61,11 @@
               d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"
             />
           </svg>
-          <span>home</span>
+          <span class="d-none d-md-block">home</span>
         </li>
         <li
           class="d-flex flex-column align-items-center justify-content-between"
+          *ngIf="search !== true"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -47,10 +78,11 @@
             <path
               d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
             /></svg
-          ><span>rete</span>
+          ><span class="d-none d-md-block">rete</span>
         </li>
         <li
           class="d-flex flex-column align-items-center justify-content-between"
+          *ngIf="search !== true"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -66,10 +98,11 @@
             <path
               d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"
             /></svg
-          ><span>lavoro</span>
+          ><span class="d-none d-md-block">lavoro</span>
         </li>
         <li
           class="d-flex flex-column align-items-center justify-content-between"
+          *ngIf="search !== true"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -82,14 +115,32 @@
             <path
               d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
             /></svg
-          ><span>messaggistica</span>
+          ><span class="d-none d-md-block">messaggistica</span>
+        </li>
+        <li
+          class="d-flex flex-column align-items-center justify-content-between"
+          *ngIf="search !== true"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-bell-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"
+            /></svg
+          ><span class="d-none d-md-block">notifiche</span>
         </li>
 
         <li
           id="profile"
-          class="text-end d-flex flex-column justify-content-between"
+          class="d-flex flex-column justify-content-between"
           data-bs-toggle="dropdown"
           aria-expanded="false"
+          *ngIf="search !== true"
         >
           <div id="profile-pic">
             <img
@@ -98,11 +149,14 @@
               class="rounded-circle"
             />
           </div>
-          <span>me</span>
+          <span class="d-none d-md-block"
+            >me <i class="bi bi-caret-down-fill"></i
+          ></span>
         </li>
         <li
           id="factory"
           class="d-flex flex-column align-items-center justify-content-between"
+          *ngIf="search !== true"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +169,7 @@
             <path
               d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V7zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-2z"
             /></svg
-          ><span>per le aziende</span>
+          ><span class="d-none d-md-block">per le aziende</span>
         </li>
       </ul>
 
