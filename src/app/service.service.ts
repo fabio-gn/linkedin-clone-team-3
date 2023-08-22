@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IProfile } from './interfaces/profile';
 import { Observable } from 'rxjs';
+import { IExperience } from './interfaces/experience';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,13 @@ export class ServiceService {
     })
 
     return this.http.get<IProfile[]>(this.apiUrl, { headers })
+  }
+
+  getExp(id:string):Observable<IExperience[]>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authToken}`
+    })
+    return this.http.get<IExperience[]>(this.apiUrl+'/'+id+'/experiences', { headers})
   }
 
 }

@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainProfileComponent } from './components/main-profile/main-profile.component';
 import { AsideComponent } from './aside/aside.component';
+import { CollegamentiComponent } from './pages/collegamenti/collegamenti.component';
+import { EsperienzeComponent } from './components/esperienze/esperienze.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { AsideComponent } from './aside/aside.component';
     MainProfileComponent,
     AsideComponent,
     NavbarComponent,
+    CollegamentiComponent,
+    EsperienzeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
   providers: [],
