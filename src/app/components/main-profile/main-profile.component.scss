@@ -1,11 +1,17 @@
-span{
+span,a{
   color: rgb(43, 134, 209);
   font-weight: 500;
   cursor: pointer;
 }
 
+#collegamenti{
+  text-decoration: none;
+}
+
 #banner{
   height: 15em;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
 }
 
 #image {
@@ -35,6 +41,9 @@ span{
   background-color: lightgray;
   border-radius: 50%;
   transition: opacity 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 

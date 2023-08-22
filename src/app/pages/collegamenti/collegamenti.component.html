@@ -1,0 +1,23 @@
+<p class="w-75 mx-auto text-secondary fw-semibold">
+  {{ profiles.length }} risultati
+</p>
+<div class="w-75 mx-auto border rounded-3">
+  <div
+    *ngFor="let profile of profiles"
+    class="m-3 pb-2 border-bottom d-flex gap-3"
+  >
+    <img
+      src="https://picsum.photos/50
+    "
+      alt="profilo"
+      class="rounded-circle"
+      width="50"
+      height="50"
+    />
+    <div>
+      <p class="m-0 fw-bold fs-5">{{ profile.name }} {{ profile.surname }}</p>
+      <p class="m-0">{{ profile.title }}</p>
+      <p class="m-0 text-secondary">{{ profile.area }}</p>
+    </div>
+  </div>
+</div>
