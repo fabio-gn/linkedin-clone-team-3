@@ -1,3 +1,9 @@
+#undertext{
+  font-size: 14px;
+}
+h5{
+  margin-bottom: 0;
+}
 .scroll-left,
 .scroll-right {
   background-color: rgba(255, 255, 255, 0.316);
@@ -62,6 +68,11 @@
 .slide::-webkit-scrollbar-thumb:active {
   background-color: grey;
 }
-
+#slide{
+  scroll-snap-type: x mandatory;
+}
+.card{
+  scroll-snap-align: start;
+}
 
 
