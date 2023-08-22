@@ -15,6 +15,7 @@ import { MainProfileComponent } from './components/main-profile/main-profile.com
 import { AsideComponent } from './aside/aside.component';
 import { CollegamentiComponent } from './pages/collegamenti/collegamenti.component';
 import { EsperienzeComponent } from './components/esperienze/esperienze.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { EsperienzeComponent } from './components/esperienze/esperienze.componen
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

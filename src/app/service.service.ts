@@ -41,4 +41,11 @@ export class ServiceService {
     return this.http.get<IExperience[]>(this.apiUrl+'/'+id+'/experiences', { headers})
   }
 
+  postExp(id:string):Observable<IExperience>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authToken}`
+    })
+    return this.http.post<IExperience>(this.apiUrl+'/'+id+'/experiences', { headers})
+  }
+
 }
