@@ -1,4 +1,4 @@
-<div class="container border rounded py-3 mt-3">
+<div class="container border rounded py-3 mt-3 w-50">
   <div class="d-flex justify-content-between">
     <h5 class="fit-content">Esperienze</h5>
     <p class="mt-5 fst-italic text-secondary" *ngIf="!experiences.length">
@@ -6,38 +6,40 @@
     </p>
     <div class="fit-content d-flex gap-3">
       <p class="fit-content icon-plus">
-        <i class="bi bi-plus-lg" (click)="openModal(infoModal)"></i>
-      </p>
-      <p class="fit-content icon-pencil">
-        <i
-          _ngcontent-ng-c1544257359=""
-          class="bi bi-pencil"
-          routerLink="/modify"
-        ></i>
+        <i class="bi bi-plus-lg fs-4" (click)="openModal(infoModal)"></i>
       </p>
     </div>
   </div>
   <div
-    class="experience d-flex align-items-center gap-2 mb-3"
+    class="experience d-flex align-items-center justify-content-between mb-3"
     *ngFor="let exp of experiences"
   >
-    <div class="img-container" style="width: 3.5rem; height: 3.5rem">
-      <img
-        class="w-100"
-        src="../../../assets/img/consigliati-card-img-1.png"
-        alt="esperienza-logo"
-      />
-    </div>
-    <div class="exp exp-text">
-      <p class="exp exp-name fw-semibold fs-5 mb-1">{{ exp.role }}</p>
-      <p class="exp exp-place mb-1">{{ exp.company }}</p>
-      <div class="exp exp-date text-secondary">
-        {{ exp.startDate | date : "dd-MM-yyyy" }} -
-        {{
-          (exp.endDate ? exp.endDate : "in corso") | customDate : "dd-MM-yyyy"
-        }}
-        • {{ getElapsedTimeText(exp) }}
+    <div class="d-flex gap-3">
+      <div class="img-container" style="width: 3.5rem; height: 3.5rem">
+        <img
+          class="w-100"
+          src="../../../assets/img/consigliati-card-img-1.png"
+          alt="esperienza-logo"
+        />
       </div>
+      <div class="exp exp-text">
+        <p class="exp exp-name fw-semibold fs-5 mb-1">{{ exp.role }}</p>
+        <p class="exp exp-place mb-1">{{ exp.company }}</p>
+        <div class="exp exp-date text-secondary">
+          {{ exp.startDate | date : "dd-MM-yyyy" }} -
+          {{
+            (exp.endDate ? exp.endDate : "in corso") | customDate : "dd-MM-yyyy"
+          }}
+          • {{ getElapsedTimeText(exp) }}
+        </div>
+      </div>
+    </div>
+    <div>
+      <i class="bi bi-pencil me-3 fs-5" (click)="editExperience(exp)"></i>
+      <i
+        class="bi bi-trash3-fill text-danger fs-5"
+        (click)="deleteExperience(exp)"
+      ></i>
     </div>
   </div>
 </div>

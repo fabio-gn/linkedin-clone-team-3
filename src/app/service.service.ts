@@ -39,7 +39,7 @@ export class ServiceService {
     return this.http.get<IProfile>(this.apiUrl+'/'+id, { headers })
   }
 
-  putMe(update:IProfile):Observable<IProfile>{
+  putMe(update:Partial<IProfile>):Observable<IProfile>{
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.authToken}`,
       'Content-Type': 'application/json'

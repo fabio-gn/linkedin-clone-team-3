@@ -17,6 +17,8 @@ import { CollegamentiComponent } from './pages/collegamenti/collegamenti.compone
 import { EsperienzeComponent } from './components/esperienze/esperienze.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { CustomDatePipe } from './custom-date.pipe';
+import { ModifyComponent } from './pages/modify/modify.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { DatePipe } from '@angular/common';
     AsideComponent,
     NavbarComponent,
     CollegamentiComponent,
-    EsperienzeComponent
+    EsperienzeComponent,
+    CustomDatePipe,
+    ModifyComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,10 @@ import { DatePipe } from '@angular/common';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [DatePipe],
+  providers: [
+    DatePipe,
+    CustomDatePipe
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

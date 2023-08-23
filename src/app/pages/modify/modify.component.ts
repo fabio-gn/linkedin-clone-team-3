@@ -8,11 +8,11 @@ import { CustomDatePipe } from '../../custom-date.pipe';
 import { finalize, switchMap, tap } from 'rxjs';
 
 @Component({
-  selector: 'app-esperienze',
-  templateUrl: './esperienze.component.html',
-  styleUrls: ['./esperienze.component.scss']
+  selector: 'app-modify',
+  templateUrl: './modify.component.html',
+  styleUrls: ['./modify.component.scss']
 })
-export class EsperienzeComponent {
+export class ModifyComponent {
 
   formData:Partial<IExperience> = {
     role: '',
