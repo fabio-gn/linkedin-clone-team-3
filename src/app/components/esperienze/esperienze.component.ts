@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IExperience } from 'src/app/interfaces/experience';
 import { ServiceService } from 'src/app/service.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-esperienze',
@@ -26,7 +27,8 @@ export class EsperienzeComponent {
   constructor(
     private svc: ServiceService,
     private modalService: NgbModal,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private datePipe: DatePipe
   ){}
 
   openModal(content: any) {
@@ -59,8 +61,14 @@ export class EsperienzeComponent {
      return this.form.get(fieldName)?.touched
    }
 
-   register(){
-    this.svc.postExp(this.id, this.formData).subscribe( () => this.modalService.dismissAll())
-   }
+   register() {
+    this.formData = this.form.value
+    this.svc.postExp(this.id, this.formData).subscribe(() => {
+      this.modalService.dismissAll()
+      this.svc.getExp(this.id).subscribe(exps => {
+        this.experiences = exps
+      })
+    })
+  }
 
 }

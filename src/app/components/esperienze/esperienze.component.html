@@ -11,16 +11,17 @@
     </div>
   </div>
   <div class="experience d-flex align-items-center gap-2">
-    <div
-      class="img-container"
-      style="width: 3.5rem; height: 3.5rem; background-color: lightblue"
-    >
-      <img src="" alt="" />
+    <div class="img-container" style="width: 3.5rem; height: 3.5rem">
+      <img
+        class="w-100"
+        src="../../../assets/img/consigliati-card-img-1.png"
+        alt="esperienza-logo"
+      />
     </div>
     <div class="exp exp-text" *ngFor="let exp of experiences">
       <p class="exp exp-name">{{ exp.role }}</p>
       <p class="exp exp-place">{{ exp.company }}</p>
-      <p class="exp exp-date">{{ exp.startDate }}</p>
+      <p class="exp exp-date">{{ exp.startDate | date : "dd-MM-yyyy" }}</p>
     </div>
   </div>
 </div>
