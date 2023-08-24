@@ -10,13 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   constructor(private Svc: PostService) {}
 
-  posts!: IPost;
+  posts: IPost[] = [];
 
   ngOnInit() {
     this.getPost();
   }
 
-  getPost(): any {
-    this.Svc.getPosts().subscribe((data) => console.log(data));
+  getPost() {
+    this.Svc.getPosts().subscribe(
+      (data) => ((this.posts = data), console.log(data))
+    );
   }
 }
