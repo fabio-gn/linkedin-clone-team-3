@@ -16,6 +16,6 @@ export class CommentService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authToken}`,
     });
-    return this.http.get<IPost[]>(this.apiUrl, { headers });
+    return this.http.get<IPost[]>(this.apiUrl + id, { headers });
   }
 }
