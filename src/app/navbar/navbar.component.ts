@@ -10,11 +10,16 @@ import { ServiceService } from '../service.service';
 })
 export class NavbarComponent {
   search: boolean = false;
+  profilo!:IProfile
 
   constructor(
     private svc: ServiceService,
     private profileDataService: ProfileDataService
   ){}
+
+  ngOnInit(){
+    this.svc.getMe().subscribe(profilo => this.profilo = profilo)
+  }
 
   searchToggle(): void {
     this.search = !this.search;
