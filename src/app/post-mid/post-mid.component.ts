@@ -9,17 +9,27 @@ import { IProfile } from '../interfaces/profile';
   styleUrls: ['./post-mid.component.scss']
 })
 export class PostMidComponent {
-@Input() posts!: IPost
+@Input() post!: IPost
 
 
-constructor(private svc: ServiceService){
 
 }
 
-profilo!:IProfile
-collegamenti!:IProfile[]
-ngOnInit(){
-  this.svc.getMe().subscribe(profilo => this.profilo = profilo)
-  this.svc.getAll().subscribe(collegamenti => this.collegamenti = collegamenti)
-}
-}
+
+
+
+
+
+
+
+// constructor(private svc: ServiceService){
+
+// }
+
+// profilo!:IProfile
+// collegamenti!:IProfile[]
+// ngOnInit(){
+//   this.svc.getMe().subscribe(profilo => this.profilo = profilo)
+//   this.svc.getAll().subscribe(collegamenti => this.collegamenti = collegamenti)
+// }
+// }
