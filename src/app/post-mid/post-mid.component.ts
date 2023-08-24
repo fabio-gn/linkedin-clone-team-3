@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IPost } from '../interfaces/ipost';
+import { ServiceService } from '../service.service';
+import { IProfile } from '../interfaces/profile';
 
 @Component({
   selector: 'app-post-mid',
@@ -8,4 +11,15 @@ import { Component } from '@angular/core';
 export class PostMidComponent {
 @Input() posts!: IPost
 
+
+constructor(private svc: ServiceService){
+
+}
+
+profilo!:IProfile
+collegamenti!:IProfile[]
+ngOnInit(){
+  this.svc.getMe().subscribe(profilo => this.profilo = profilo)
+  this.svc.getAll().subscribe(collegamenti => this.collegamenti = collegamenti)
+}
 }

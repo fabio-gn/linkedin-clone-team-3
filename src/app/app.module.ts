@@ -19,11 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { CustomDatePipe } from './custom-date.pipe';
 import { ModifyComponent } from './pages/modify/modify.component';
-<<<<<<< HEAD
 import { PostMidComponent } from './post-mid/post-mid.component';
-=======
 import { HomeprofilecardComponent } from './components/homeprofilecard/homeprofilecard.component';
->>>>>>> main
 
 @NgModule({
   declarations: [
@@ -39,11 +36,8 @@ import { HomeprofilecardComponent } from './components/homeprofilecard/homeprofi
     EsperienzeComponent,
     CustomDatePipe,
     ModifyComponent,
-<<<<<<< HEAD
-    PostMidComponent
-=======
-    HomeprofilecardComponent
->>>>>>> main
+    PostMidComponent,
+    HomeprofilecardComponent,
   ],
   imports: [
     BrowserModule,
