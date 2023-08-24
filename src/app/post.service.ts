@@ -1,3 +1,4 @@
+import { IPost } from 'src/app/interfaces/ipost';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -34,14 +35,16 @@ export class PostService {
   }
 
   // Definiamo un metodo createPost per creare un nuovo post
-  createPost(post: { text: string }): Observable<any> {
+  createPost(post: IPost): Observable<any> {
     // Creiamo un oggetto HttpHeaders per impostare gli header Authorization e Content-Type con il token di autenticazione e il tipo di contenuto della richiesta
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authToken}`,
       'Content-Type': 'application/json',
     });
+    const body = JSON.stringify(post);
+
     // Utilizziamo il metodo post di HttpClient per effettuare una richiesta POST all'URL delle API dei post, inviando il contenuto del post come corpo della richiesta e passando l'oggetto headers come opzione della richiesta
-    return this.http.post<IPost>(this.apiUrl, post, { headers });
+    return this.http.post<IPost>(this.apiUrl, body, { headers });
   }
 
   // Definiamo un metodo updatePost per aggiornare un post esistente specificato dall'ID del post
