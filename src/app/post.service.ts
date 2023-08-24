@@ -1,21 +1,14 @@
-// Importiamo il decoratore Injectable dal modulo @angular/core per creare un servizio Angular
 import { Injectable } from '@angular/core';
-// Importiamo HttpClient e HttpHeaders dal modulo @angular/common/http per effettuare richieste HTTP
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-// Importiamo Observable dal modulo rxjs per utilizzare gli Observable come tipo di ritorno dei metodi del servizio
 import { Observable } from 'rxjs';
 
-// Utilizziamo il decoratore Injectable per indicare che questa classe può essere iniettata come dipendenza in altri componenti o servizi
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  // Definiamo l'URL base delle API per i post
   private apiUrl = 'https://striveschool-api.herokuapp.com/api/posts/';
-  // Definiamo il token di autenticazione per le richieste alle API, cambiare con il proprio token
   private authToken = '<YOUR_AUTH_TOKEN_HERE>';
 
-  // Iniettiamo HttpClient nel costruttore del servizio per poterlo utilizzare per effettuare richieste HTTP
   constructor(private http: HttpClient) { }
 
   // Definiamo un metodo getPosts per ottenere tutti i post esistenti
@@ -69,4 +62,5 @@ export class PostService {
     // Utilizziamo il metodo delete di HttpClient per effettuare una richiesta DELETE all'URL delle API dei post, aggiungendo l'ID del post all'URL e passando l'oggetto headers come opzione della richiesta
     return this.http.delete<void>(`${this.apiUrl}${postId}`, { headers });
   }
+
 }
