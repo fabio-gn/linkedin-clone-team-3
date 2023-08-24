@@ -1,0 +1,30 @@
+img{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+img{
+  height: 4rem;
+  width: 4rem;
+}
+
+.card-title{
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(0, 0, 0)
+}
+
+a{
+  color: rgb(2, 2, 2);
+  text-decoration: none;
+}
+
+a:hover{
+  color:blue
+}
+
+.card-title{
+  font-size: 13px;
+  color:gray
+}

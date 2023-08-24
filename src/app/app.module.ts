@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { CustomDatePipe } from './custom-date.pipe';
 import { ModifyComponent } from './pages/modify/modify.component';
+import { PostMidComponent } from './post-mid/post-mid.component';
 import { HomeprofilecardComponent } from './components/homeprofilecard/homeprofilecard.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 
@@ -36,6 +37,8 @@ import { AddPostComponent } from './components/add-post/add-post.component';
     EsperienzeComponent,
     CustomDatePipe,
     ModifyComponent,
+    PostMidComponent,
+    HomeprofilecardComponent,
     HomeprofilecardComponent,
     AddPostComponent
   ],
