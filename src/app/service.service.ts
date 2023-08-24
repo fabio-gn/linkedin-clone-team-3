@@ -22,7 +22,6 @@ export class ServiceService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.authToken}`
     })
-
     return this.http.get<IProfile>(this.apiUrl+'/me', { headers })
   }
 
@@ -30,8 +29,22 @@ export class ServiceService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.authToken}`
     })
-
     return this.http.get<IProfile[]>(this.apiUrl, { headers })
+  }
+
+  getSpec(id:string):Observable<IProfile>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authToken}`
+    })
+    return this.http.get<IProfile>(this.apiUrl+'/'+id, { headers })
+  }
+
+  putMe(update:Partial<IProfile>):Observable<IProfile>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authToken}`,
+      'Content-Type': 'application/json'
+    })
+    return this.http.put<IProfile>(this.apiUrl, update, { headers })
   }
 
   getExp(id:string):Observable<IExperience[]>{
@@ -41,8 +54,23 @@ export class ServiceService {
     return this.http.get<IExperience[]>(this.apiUrl+'/'+id+'/experiences', { headers})
   }
 
-<<<<<<< Updated upstream
-  postExp(id:string):Observable<IExperience>{
+  postExp(id:string, experience: Partial<IExperience>):Observable<IExperience>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authToken}`,
+      'Content-Type': 'application/json'
+    })
+    return this.http.post<IExperience>(this.apiUrl+'/'+id+'/experiences', experience, { headers})
+  }
+
+  putExp(id:string, expId:string, experience: Partial<IExperience>):Observable<IExperience>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authToken}`,
+      'Content-Type': 'application/json'
+    })
+    return this.http.put<IExperience>(this.apiUrl+'/'+id+'/experiences/'+expId, experience, { headers})
+  }
+
+  deleteExp(id:string, expId:string):Observable<void>{
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.authToken}`
     })

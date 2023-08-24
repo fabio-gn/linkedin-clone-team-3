@@ -65,4 +65,21 @@ export class MainProfileComponent {
       reader.readAsDataURL(file);
     }
   }
+
+  editedProfile:Partial<IProfile> = {}
+
+  editProfile() {
+    this.svc.putMe(this.editedProfile).subscribe(updatedProfile => {
+      this.profile = updatedProfile;
+      this.editedProfile = {}
+        this.modalService.dismissAll()
+    })
+  }
+
+  openEditProfileModal(content: any) {
+    this.editedProfile = { ...this.profile };
+    this.modalService.open(content);
+  }
+
+
 }
