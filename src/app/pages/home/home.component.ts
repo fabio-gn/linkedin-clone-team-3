@@ -8,15 +8,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private Svc: PostService) {}
+  constructor(private Svc: PostService) { }
 
-  posts!: IPost;
+  posts: IPost[] = [];
+  newPost!: IPost;
 
   ngOnInit() {
     this.getPost();
   }
 
-  getPost(): any {
-    this.Svc.getPosts().subscribe((data) => console.log(data));
+  getPost() {
+    this.Svc.getPosts().subscribe(
+      (data) => ((this.posts = data), console.log(data))
+    );
+  }
+
+  postPost(post: IPost) {
+    this.Svc.createPost(post).subscribe((data) => console.log(data));
+  }
+
+  updatePost(postId: string, text: string) {
+    this.Svc.updatePost(postId, { text }).subscribe((updatedPost) => {
+      this.getPost();
+    });
+  }
+
+  deletePost(postId: string) {
+    this.Svc.deletePost(postId).subscribe(() => {
+      this.getPost();
+    });
   }
 }
