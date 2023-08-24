@@ -1,0 +1,54 @@
+
+<div class="container" style="width: 17rem">
+<div class="card rounded-3 overflow-hidden mb-2" style="width: 100%">
+  <div class="bg-image d-flex justify-content-center" style="background-image: url(https://legaltracking.com.mx/wp-content/uploads/2020/01/placeholder-1013x675.png)">
+    <div class="profile-image border rounded-circle" style="background-image: url({{profilo.image}})">
+    </div>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title text-center mt-4"><a routerLink="/profile">{{profilo.name}} {{profilo.surname}}</a></h5>
+    <p class="card-text text-center">{{profilo.title}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <p class="collegamenti mb-0">collegamenti</p>
+        <p class="espandi fw-bold">espandi la tua rete</p>
+      </div>
+      <p class="fw-bold" style="color:rgb(10, 102, 194)">{{collegamenti.length}}</p>
+    </li>
+    <li class="list-group-item">
+      <p class="mb-0">
+        Accedi a strumenti e informazioni in esclusiva
+      </p>
+      <p class="prova-premium d-flex align-items-center fw-bold"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" class="mercado-match" width="24" height="24" focusable="false">
+        <path d="M20 20a3.36 3.36 0 001-2.39V6.38A3.38 3.38 0 0017.62 3H6.38A3.36 3.36 0 004 4z" fill="#f8c77e"></path>
+        <path d="M4 4a3.36 3.36 0 00-1 2.38v11.24A3.38 3.38 0 006.38 21h11.24A3.36 3.36 0 0020 20z" fill="#e7a33e"></path>
+      </svg>Prova premium gratis</p>
+    </li>
+    <li class="list-group-item">
+      <p class="fw-bold" style="color: rgb(0,0,0,0.6)"><i class="bi bi-bookmark-fill"></i> I miei elementi</p>
+    </li>
+  </ul>
+
+</div>
+
+<div class="card" style="width: 100%">
+  <ul class="list-group list-group-flush">
+    <li class="non-hover list-group-item d-flex justify-content-between align-items-center">
+      <ul class="inside-list">
+        <li class="non-hover"><a href="#">Gruppi</a></li>
+        <li class="non-hover"><a href="#">Eventi</a></li>
+        <li class="non-hover"><a href="#">Hashtag seguiti</a></li>
+      </ul>
+      <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
+        <path d="M14 9H9v5H7V9H2V7h5V2h2v5h5z"></path>
+      </svg></a>
+    </li>
+    <li class="list-group-item scopri-più text-center">Scopri di più</li>
+
+  </ul>
+
+</div>
+
+</div>
