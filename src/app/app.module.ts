@@ -21,6 +21,7 @@ import { CustomDatePipe } from './custom-date.pipe';
 import { ModifyComponent } from './pages/modify/modify.component';
 import { PostMidComponent } from './post-mid/post-mid.component';
 import { HomeprofilecardComponent } from './components/homeprofilecard/homeprofilecard.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,8 @@ import { HomeprofilecardComponent } from './components/homeprofilecard/homeprofi
     ModifyComponent,
     PostMidComponent,
     HomeprofilecardComponent,
+    HomeprofilecardComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,

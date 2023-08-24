@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { IProfile } from '../interfaces/profile';
+import { ProfileDataService } from '../profile-data.service';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +11,19 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
   search: boolean = false;
 
+  constructor(
+    private svc: ServiceService,
+    private profileDataService: ProfileDataService
+  ){}
+
   searchToggle(): void {
     this.search = !this.search;
   }
+
+  updateMainProfileData(): void {
+    this.svc.getMe().subscribe((profile: IProfile) => {
+      this.profileDataService.setSelectedProfile(profile)
+    })
+  }
+
 }

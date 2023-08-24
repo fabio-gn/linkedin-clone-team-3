@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { forkJoin } from 'rxjs';
 import { IProfile } from 'src/app/interfaces/profile';
+import { ProfileDataService } from 'src/app/profile-data.service';
 import { ServiceService } from 'src/app/service.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class MainProfileComponent {
 
   constructor(
     private svc: ServiceService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private profileDataService: ProfileDataService
   ){}
 
   ngOnInit(){
@@ -28,6 +30,11 @@ export class MainProfileComponent {
     ]).subscribe(([profile, profiles]) => {
       this.profile = profile;
       this.collegamenti = profiles;
+    })
+    this.profileDataService.getSelectedProfile().subscribe(selectedProfile => {
+      if (selectedProfile) {
+        this.profile = selectedProfile;
+      }
     })
   }
 

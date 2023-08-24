@@ -6,5 +6,7 @@ export interface IProfile {
   bio:string;
   title:string;
   area:string;
-  image:string
+  image:string;
+  statoCollegamento: 'collegato' | 'attesa';
+  username:string
 }

@@ -1,0 +1,28 @@
+.profile-image{
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 3.5rem;
+  width: 3.5rem;
+}
+#new-post{
+  padding-left: 1rem;
+  flex-grow: 1;
+
+  border-color: #D2B7B7;
+}
+#new-post:hover{
+  background-color: rgb(235, 235, 235);
+}
+button{
+  background-color: white;
+  border: none;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0,0,0,0.6)
+}
+button img{
+  width: 35px;
+}
