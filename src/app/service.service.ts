@@ -6,97 +6,92 @@ import { Observable } from 'rxjs';
 import { IExperience } from './interfaces/experience';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ServiceService {
+  apiUrl: string = 'https://striveschool-api.herokuapp.com/api/profile';
+  authToken: string =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGUzMmU0YjFmMTc1YzAwMTRjNTU4ZjAiLCJpYXQiOjE2OTI2MTAxMjMsImV4cCI6MTY5MzgxOTcyM30.ETmqHK7g4xFJsEHHrxxFrIvhpsdo4QBKPAyca7RcGOE';
 
-  apiUrl:string = 'https://striveschool-api.herokuapp.com/api/profile'
-  authToken:string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGUzMmU0YjFmMTc1YzAwMTRjNTU4ZjAiLCJpYXQiOjE2OTI2MTAxMjMsImV4cCI6MTY5MzgxOTcyM30.ETmqHK7g4xFJsEHHrxxFrIvhpsdo4QBKPAyca7RcGOE'
+  constructor(private http: HttpClient, private router: Router) {}
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) { }
-
-  getMe():Observable<IProfile>{
+  getMe(): Observable<IProfile> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.authToken}`
-    })
-    return this.http.get<IProfile>(this.apiUrl+'/me', { headers })
+      Authorization: `Bearer ${this.authToken}`,
+    });
+    return this.http.get<IProfile>(this.apiUrl + '/me', { headers });
   }
 
-  getAll():Observable<IProfile[]>{
+  getAll(): Observable<IProfile[]> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.authToken}`
-    })
-    return this.http.get<IProfile[]>(this.apiUrl, { headers })
+      Authorization: `Bearer ${this.authToken}`,
+    });
+    return this.http.get<IProfile[]>(this.apiUrl, { headers });
   }
 
-  getSpec(id:string):Observable<IProfile>{
+  getSpec(id: string): Observable<IProfile> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.authToken}`
-    })
-    return this.http.get<IProfile>(this.apiUrl+'/'+id, { headers })
+      Authorization: `Bearer ${this.authToken}`,
+    });
+    return this.http.get<IProfile>(this.apiUrl + '/' + id, { headers });
   }
 
-  putMe(update:Partial<IProfile>):Observable<IProfile>{
+  putMe(update: Partial<IProfile>): Observable<IProfile> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.authToken}`,
-      'Content-Type': 'application/json'
-    })
-    return this.http.put<IProfile>(this.apiUrl, update, { headers })
+      Authorization: `Bearer ${this.authToken}`,
+      'Content-Type': 'application/json',
+    });
+    return this.http.put<IProfile>(this.apiUrl, update, { headers });
   }
 
-  getExp(id:string):Observable<IExperience[]>{
+  getExp(id: string): Observable<IExperience[]> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.authToken}`
-    })
-    return this.http.get<IExperience[]>(this.apiUrl+'/'+id+'/experiences', { headers})
+      Authorization: `Bearer ${this.authToken}`,
+    });
+    return this.http.get<IExperience[]>(
+      this.apiUrl + '/' + id + '/experiences',
+      { headers }
+    );
   }
 
-//   postExp(id:string, experience: Partial<IExperience>):Observable<IExperience>{
-//     const headers = new HttpHeaders({
-//       'Authorization': `Bearer ${this.authToken}`,
-//       'Content-Type': 'application/json'
-//     })
-//     return this.http.post<IExperience>(this.apiUrl+'/'+id+'/experiences', experience, { headers})
-//   }
-
-//   putExp(id:string, expId:string, experience: Partial<IExperience>):Observable<IExperience>{
-//     const headers = new HttpHeaders({
-//       'Authorization': `Bearer ${this.authToken}`,
-//       'Content-Type': 'application/json'
-//     })
-//     return this.http.put<IExperience>(this.apiUrl+'/'+id+'/experiences/'+expId, experience, { headers})
-//   }
-
-//   deleteExp(id:string, expId:string):Observable<void>{
-//     const headers = new HttpHeaders({
-//       'Authorization': `Bearer ${this.authToken}`
-//     })
-//     return this.http.post<IExperience>(this.apiUrl+'/'+id+'/experiences', { headers})
-// =======
-  postExp(id:string, experience: Partial<IExperience>):Observable<IExperience>{
+  postExp(
+    id: string,
+    experience: Partial<IExperience>
+  ): Observable<IExperience> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.authToken}`,
-      'Content-Type': 'application/json'
-    })
-    return this.http.post<IExperience>(this.apiUrl+'/'+id+'/experiences', experience, { headers})
+      Authorization: `Bearer ${this.authToken}`,
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<IExperience>(
+      this.apiUrl + '/' + id + '/experiences',
+      experience,
+      { headers }
+    );
   }
 
-  putExp(id:string, expId:string, experience: Partial<IExperience>):Observable<IExperience>{
+  putExp(
+    id: string,
+    expId: string,
+    experience: Partial<IExperience>
+  ): Observable<IExperience> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.authToken}`,
-      'Content-Type': 'application/json'
-    })
-    return this.http.put<IExperience>(this.apiUrl+'/'+id+'/experiences/'+expId, experience, { headers})
+      Authorization: `Bearer ${this.authToken}`,
+      'Content-Type': 'application/json',
+    });
+    return this.http.put<IExperience>(
+      this.apiUrl + '/' + id + '/experiences/' + expId,
+      experience,
+      { headers }
+    );
   }
 
-  deleteExp(id:string, expId:string):Observable<unknown>{
+  deleteExp(id: string, expId: string): Observable<unknown> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.authToken}`
-    })
-    return this.http.delete(this.apiUrl+'/'+id+'/experiences/'+expId, { headers, responseType:"text"})
+      Authorization: `Bearer ${this.authToken}`,
+    });
+    return this.http.delete(this.apiUrl + '/' + id + '/experiences/' + expId, {
+      headers,
+      responseType: 'text',
+    });
   }
-
 }
