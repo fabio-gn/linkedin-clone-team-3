@@ -4,8 +4,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IExperience } from 'src/app/interfaces/experience';
 import { ServiceService } from 'src/app/service.service';
 import { DatePipe } from '@angular/common';
-import { CustomDatePipe } from '../../custom-date.pipe';
-import { finalize, switchMap, tap } from 'rxjs';
+import { switchMap } from 'rxjs';
+import { CustomDatePipe } from 'src/app/custom-date.pipe';
 
 @Component({
   selector: 'app-modify',
