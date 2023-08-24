@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { CustomDatePipe } from './custom-date.pipe';
 import { ModifyComponent } from './pages/modify/modify.component';
+import { PostMidComponent } from './post-mid/post-mid.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ModifyComponent } from './pages/modify/modify.component';
     CollegamentiComponent,
     EsperienzeComponent,
     CustomDatePipe,
-    ModifyComponent
+    ModifyComponent,
+    PostMidComponent
   ],
   imports: [
     BrowserModule,
