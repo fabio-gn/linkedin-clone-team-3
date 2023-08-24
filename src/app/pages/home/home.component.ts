@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   constructor(private Svc: PostService) {}
 
   posts: IPost[] = [];
+  newPost!: IPost;
 
   ngOnInit() {
     this.getPost();
@@ -20,5 +21,9 @@ export class HomeComponent implements OnInit {
     this.Svc.getPosts().subscribe(
       (data) => ((this.posts = data), console.log(data))
     );
+  }
+
+  postPost(post: IPost) {
+    this.Svc.createPost(post).subscribe((data) => console.log(data));
   }
 }

@@ -41,7 +41,7 @@ export class PostService {
       'Content-Type': 'application/json',
     });
     // Utilizziamo il metodo post di HttpClient per effettuare una richiesta POST all'URL delle API dei post, inviando il contenuto del post come corpo della richiesta e passando l'oggetto headers come opzione della richiesta
-    return this.http.post<any>(this.apiUrl, post, { headers });
+    return this.http.post<IPost>(this.apiUrl, post, { headers });
   }
 
   // Definiamo un metodo updatePost per aggiornare un post esistente specificato dall'ID del post
