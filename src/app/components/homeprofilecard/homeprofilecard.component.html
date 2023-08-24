@@ -1,5 +1,5 @@
 
-<div class="container" style="width: 17rem">
+<div>
 <div class="card rounded-3 overflow-hidden mb-2" style="width: 100%">
   <div class="bg-image d-flex justify-content-center" style="background-image: url(https://legaltracking.com.mx/wp-content/uploads/2020/01/placeholder-1013x675.png)">
     <div class="profile-image border rounded-circle" style="background-image: url({{profilo.image}})">
@@ -9,7 +9,7 @@
     <h5 class="card-title text-center mt-4"><a routerLink="/profile">{{profilo.name}} {{profilo.surname}}</a></h5>
     <p class="card-text text-center">{{profilo.title}}</p>
   </div>
-  <ul class="list-group list-group-flush">
+  <ul class="list-group list-group-flush d-none d-md-block">
     <li class="list-group-item d-flex justify-content-between align-items-center">
       <div>
         <p class="collegamenti mb-0">collegamenti</p>
@@ -33,7 +33,7 @@
 
 </div>
 
-<div class="card" style="width: 100%">
+<div class="card d-none d-md-block" style="width: 100%">
   <ul class="list-group list-group-flush">
     <li class="non-hover list-group-item d-flex justify-content-between align-items-center">
       <ul class="inside-list">
