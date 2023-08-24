@@ -3,19 +3,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PostService {
   private apiUrl = 'https://striveschool-api.herokuapp.com/api/posts/';
-  private authToken = '<YOUR_AUTH_TOKEN_HERE>';
+  private authToken =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGUzMmU0YjFmMTc1YzAwMTRjNTU4ZjAiLCJpYXQiOjE2OTI2MTAxMjMsImV4cCI6MTY5MzgxOTcyM30.ETmqHK7g4xFJsEHHrxxFrIvhpsdo4QBKPAyca7RcGOE';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // Definiamo un metodo getPosts per ottenere tutti i post esistenti
   getPosts(): Observable<any[]> {
     // Creiamo un oggetto HttpHeaders per impostare l'header Authorization con il token di autenticazione
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.authToken}`
+      Authorization: `Bearer ${this.authToken}`,
     });
     // Utilizziamo il metodo get di HttpClient per effettuare una richiesta GET all'URL delle API dei post, passando l'oggetto headers come opzione della richiesta
     return this.http.get<any[]>(this.apiUrl, { headers });
@@ -25,7 +26,7 @@ export class PostService {
   getPost(postId: string): Observable<any> {
     // Creiamo un oggetto HttpHeaders per impostare l'header Authorization con il token di autenticazione
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.authToken}`
+      Authorization: `Bearer ${this.authToken}`,
     });
     // Utilizziamo il metodo get di HttpClient per effettuare una richiesta GET all'URL delle API dei post, aggiungendo l'ID del post all'URL e passando l'oggetto headers come opzione della richiesta
     return this.http.get<any>(`${this.apiUrl}${postId}`, { headers });
@@ -36,7 +37,7 @@ export class PostService {
     // Creiamo un oggetto HttpHeaders per impostare gli header Authorization e Content-Type con il token di autenticazione e il tipo di contenuto della richiesta
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authToken}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     });
     // Utilizziamo il metodo post di HttpClient per effettuare una richiesta POST all'URL delle API dei post, inviando il contenuto del post come corpo della richiesta e passando l'oggetto headers come opzione della richiesta
     return this.http.post<any>(this.apiUrl, post, { headers });
@@ -47,7 +48,7 @@ export class PostService {
     // Creiamo un oggetto HttpHeaders per impostare gli header Authorization e Content-Type con il token di autenticazione e il tipo di contenuto della richiesta
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authToken}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     });
     // Utilizziamo il metodo put di HttpClient per effettuare una richiesta PUT all'URL delle API dei post, aggiungendo l'ID del post all'URL, inviando il contenuto aggiornato del post come corpo della richiesta e passando l'oggetto headers come opzione della richiesta
     return this.http.put<any>(`${this.apiUrl}${postId}`, post, { headers });
@@ -57,10 +58,9 @@ export class PostService {
   deletePost(postId: string): Observable<void> {
     // Creiamo un oggetto HttpHeaders per impostare l'header Authorization con il token di autenticazione
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.authToken}`
+      Authorization: `Bearer ${this.authToken}`,
     });
     // Utilizziamo il metodo delete di HttpClient per effettuare una richiesta DELETE all'URL delle API dei post, aggiungendo l'ID del post all'URL e passando l'oggetto headers come opzione della richiesta
     return this.http.delete<void>(`${this.apiUrl}${postId}`, { headers });
   }
-
 }
