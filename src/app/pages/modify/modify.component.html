@@ -35,7 +35,10 @@
       </div>
     </div>
     <div>
-      <i class="bi bi-pencil me-3 fs-5" (click)="editExperience(exp)"></i>
+      <i
+        class="bi bi-pencil me-3 fs-5"
+        (click)="editExperience(exp); openModal(infoModal)"
+      ></i>
       <i
         class="bi bi-trash3-fill text-danger fs-5"
         (click)="deleteExperience(exp)"

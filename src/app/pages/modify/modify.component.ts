@@ -116,16 +116,11 @@ export class ModifyComponent {
       endDate: exp.endDate
     })
     this.expId = exp._id
-    this.openModal(this.infoModal);
   }
 
   deleteExperience(exp: IExperience) {
     if (confirm("Sei sicuro di voler eliminare questa esperienza?")) {
       this.svc.deleteExp(this.id, exp._id).pipe(
-        tap(() => {
-          this.experiences = this.experiences.filter(e => e._id !== exp._id)
-          console.log(this.experiences)
-        }),
         switchMap(() => this.svc.getExp(this.id))
       ).subscribe(exps => {
         this.experiences = exps
