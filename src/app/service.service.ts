@@ -41,11 +41,35 @@ export class ServiceService {
     return this.http.get<IExperience[]>(this.apiUrl+'/'+id+'/experiences', { headers})
   }
 
+<<<<<<< Updated upstream
   postExp(id:string):Observable<IExperience>{
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.authToken}`
     })
     return this.http.post<IExperience>(this.apiUrl+'/'+id+'/experiences', { headers})
+=======
+  postExp(id:string, experience: Partial<IExperience>):Observable<IExperience>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authToken}`,
+      'Content-Type': 'application/json'
+    })
+    return this.http.post<IExperience>(this.apiUrl+'/'+id+'/experiences', experience, { headers})
+  }
+
+  putExp(id:string, expId:string, experience: Partial<IExperience>):Observable<IExperience>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authToken}`,
+      'Content-Type': 'application/json'
+    })
+    return this.http.put<IExperience>(this.apiUrl+'/'+id+'/experiences/'+expId, experience, { headers})
+  }
+
+  deleteExp(id:string, expId:string):Observable<unknown>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.authToken}`
+    })
+    return this.http.delete(this.apiUrl+'/'+id+'/experiences/'+expId, { headers, responseType:"text"})
+>>>>>>> Stashed changes
   }
 
 }

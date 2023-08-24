@@ -1,0 +1,119 @@
+<div class="container border rounded py-3 mt-3 w-50">
+  <div class="d-flex justify-content-between">
+    <h5 class="fit-content">Esperienze</h5>
+    <p class="mt-5 fst-italic text-secondary" *ngIf="!experiences.length">
+      Inserisci una nuova esperienza
+    </p>
+    <div class="fit-content d-flex gap-3">
+      <p class="fit-content icon-plus">
+        <i class="bi bi-plus-lg fs-4" (click)="openModal(infoModal)"></i>
+      </p>
+    </div>
+  </div>
+  <div
+    class="experience d-flex align-items-center justify-content-between mb-3"
+    *ngFor="let exp of experiences"
+  >
+    <div class="d-flex gap-3">
+      <div class="img-container" style="width: 3.5rem; height: 3.5rem">
+        <img
+          class="w-100"
+          src="../../../assets/img/consigliati-card-img-1.png"
+          alt="esperienza-logo"
+        />
+      </div>
+      <div class="exp exp-text">
+        <p class="exp exp-name fw-semibold fs-5 mb-1">{{ exp.role }}</p>
+        <p class="exp exp-place mb-1">{{ exp.company }}</p>
+        <div class="exp exp-date text-secondary">
+          {{ exp.startDate | date : "dd-MM-yyyy" }} -
+          {{
+            (exp.endDate ? exp.endDate : "in corso") | customDate : "dd-MM-yyyy"
+          }}
+          • {{ getElapsedTimeText(exp) }}
+        </div>
+      </div>
+    </div>
+    <div>
+      <i
+        class="bi bi-pencil me-3 fs-5"
+        (click)="editExperience(exp); openModal(infoModal)"
+      ></i>
+      <i
+        class="bi bi-trash3-fill text-danger fs-5"
+        (click)="deleteExperience(exp)"
+      ></i>
+    </div>
+  </div>
+</div>
+
+<ng-template #infoModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Aggiungi esperienza</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form
+      class="p-3 bg-light"
+      [formGroup]="form"
+      novalidate
+      (ngSubmit)="register()"
+    >
+      <div class="mb-3">
+        <label for="role" class="form-label">Qualifica</label>
+        <input type="text" class="form-control" formControlName="role" />
+        <span
+          *ngIf="!isValid('role') && isTouched('role')"
+          class="text-danger fst-italic"
+          >Campo richiesto</span
+        >
+      </div>
+      <div class="mb-3">
+        <label for="company" class="form-label">Azienda</label>
+        <input type="text" class="form-control" formControlName="company" />
+        <span
+          *ngIf="!isValid('company') && isTouched('company')"
+          class="text-danger fst-italic"
+          >Campo richiesto</span
+        >
+      </div>
+      <div class="mb-3">
+        <label for="area" class="form-label">Località</label>
+        <input type="text" class="form-control" formControlName="area" />
+        <span
+          *ngIf="!isValid('area') && isTouched('area')"
+          class="text-danger fst-italic"
+          >Campo richiesto</span
+        >
+      </div>
+      <div class="mb-3">
+        <label for="startDate" class="form-label">Data d'inizio</label>
+        <input type="date" class="form-control" formControlName="startDate" />
+        <span
+          *ngIf="!isValid('startDate') && isTouched('startDate')"
+          class="text-danger fst-italic"
+          >Campo richiesto</span
+        >
+      </div>
+      <div class="mb-3">
+        <label for="endDate" class="form-label">Data di fine</label>
+        <input type="date" class="form-control" formControlName="endDate" />
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Descrizione</label>
+        <textarea class="form-control" formControlName="description"></textarea>
+        <span
+          *ngIf="!isValid('description') && isTouched('description')"
+          class="text-danger fst-italic"
+          >Campo richiesto</span
+        >
+      </div>
+      <button [disabled]="form.invalid" class="btn">Registrati</button>
+    </form>
+  </div>
+</ng-template>
