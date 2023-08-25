@@ -19,20 +19,15 @@ export class PostMidComponent implements OnInit {
   postId!: string;
   comments!: IComment[];
 
-
-
-
   constructor(
     private postService: PostService,
     private commentsvc: CommentService,
-    private svcSvc:ServiceService
+    private svcSvc: ServiceService
   ) {}
 
-  profilo!: IProfile
+  profilo!: IProfile;
 
-  ngOnInit() {
-    this.svcSvc.getMe().subscribe(profilo => this.profilo = profilo)
-  }
+  ngOnInit() {}
 
   updatePost(postId: string, text: string) {
     console.log('updatePost called with postId:', postId, 'and text:', text);
@@ -62,6 +57,7 @@ export class PostMidComponent implements OnInit {
   }
 
   commentToggle() {
+    this.svcSvc.getMe().subscribe((profilo) => (this.profilo = profilo));
     this.isComment = !this.isComment;
     this.getComment(this.post._id);
   }
