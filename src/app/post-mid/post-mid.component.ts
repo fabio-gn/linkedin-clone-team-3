@@ -13,7 +13,7 @@ import { PostService } from '../post.service';
 })
 export class PostMidComponent implements OnInit {
   @Input() post!: IPost;
-  newText: string = '';
+  editedText: string = '';
   posts: IPost[] = [];
   isComment: boolean = false;
   postId!: string;
@@ -68,17 +68,14 @@ export class PostMidComponent implements OnInit {
     this.getComment(this.post._id);
   }
 
-  editPost(post: IPost) {
-    // Set the isEditing property of the post to true
-    post.isEditing = true;
+  editPost() {
+    // Set the editedText property to the current text of the post
+    this.editedText = this.post.text;
   }
 
-  savePost(post: IPost) {
-    // Set the isEditing property of the post to false
-    post.isEditing = false;
-
+  savePost() {
     // Send a request to your server to update the post's text in your database
-    this.postService.updatePost(post._id, { text: post.text }).subscribe((data) => {
+    this.postService.updatePost(this.post._id, { text: this.editedText }).subscribe((data) => {
       console.log(data);
     });
   }
