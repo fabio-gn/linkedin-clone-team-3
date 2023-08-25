@@ -15,10 +15,12 @@ export class PostMidComponent implements OnInit {
 
   postId!: string;
 
-  constructor(private svc: CommentService) {}
+  constructor(private svc: CommentService, private svcSvc:ServiceService) {}
+  
+  profilo!: IProfile
 
   ngOnInit() {
-    // this.getComment();
+    this.svcSvc.getMe().subscribe(profilo => this.profilo = profilo)
   }
 
   getComment() {

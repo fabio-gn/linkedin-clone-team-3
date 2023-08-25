@@ -28,3 +28,54 @@ a:hover{
   font-size: 13px;
   color:gray
 }
+.profile-image{
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 2.2rem;
+  width: 2.2rem;
+}
+.comment-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: white;
+  height: 2rem;
+  width: 2rem;
+  color: rgba(0,0,0,0.6)
+}
+.comment-button:hover{
+  background-color: #ebebeb;
+  outline: none;
+}
+.comment-input{
+  border: none;
+  outline: none;
+}
+.comment-input:hover{
+  border: none;
+  outline: none;
+}
+.comment-input:active{
+  border:none;
+  outline: none;
+}
+.comment-input:focus{
+  border: none;
+  outline: none;
+}
+.comment-input:focus-visible{
+  border: none;
+  outline: none;
+}
+.flex-grow{
+  flex-grow: 1;
+}
+.sezione-aggiungi-commento{
+  color: rgba(0,0,0,0.6)
+}
+#post-section{
+  transition: 0.5s;
+}
