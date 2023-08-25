@@ -29,10 +29,7 @@
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li>
-          <button
-            (click)="updatePost(post._id, editedText)"
-            class="dropdown-item"
-          >
+          <button (click)="editPost(post._id)" class="dropdown-item">
             Edit
           </button>
         </li>
@@ -43,6 +40,12 @@
         </li>
       </ul>
     </div>
+
+    <!-- Add an input field for editing the post's text -->
+    <input [(ngModel)]="editedText" />
+
+    <!-- Add a save button for the post -->
+    <button (click)="savePost(post._id, editedText)">Save</button>
   </div>
   <div>
     <button type="button" class="btn">

@@ -68,12 +68,12 @@ export class PostMidComponent implements OnInit {
     this.getComment(this.post._id);
   }
 
-  editPost() {
+  editPost(postId: string) {
     // Set the editedText property to the current text of the post
     this.editedText = this.post.text;
   }
 
-  savePost() {
+  savePost(postId: string, editedText: string) {
     // Send a request to your server to update the post's text in your database
     this.postService.updatePost(this.post._id, { text: this.editedText }).subscribe((data) => {
       console.log(data);
