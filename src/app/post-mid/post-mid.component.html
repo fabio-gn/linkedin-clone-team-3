@@ -41,11 +41,14 @@
       </ul>
     </div>
 
-    <!-- Add an input field for editing the post's text -->
-    <input [(ngModel)]="editedText" />
+    <!-- Utilizza la direttiva *ngIf per mostrare il campo di input e il pulsante "Save" solo quando la variabile isEditing è impostata su true -->
+    <div *ngIf="isEditing">
+      <!-- Add an input field for editing the post's text -->
+      <input [(ngModel)]="editedText" />
 
-    <!-- Add a save button for the post -->
-    <button (click)="savePost(post._id, editedText)">Save</button>
+      <!-- Add a save button for the post -->
+      <button (click)="savePost(post._id, editedText)">Save</button>
+    </div>
   </div>
 
   <div>

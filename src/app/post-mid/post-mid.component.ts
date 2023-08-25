@@ -19,6 +19,7 @@ export class PostMidComponent implements OnInit {
   postId!: string;
   comments!: IComment[];
   currentUserId!: string;
+  isEditing = false; // Aggiungi una variabile per tenere traccia dello stato di modifica del post
 
   constructor(
     private postService: PostService,
@@ -70,12 +71,16 @@ export class PostMidComponent implements OnInit {
   editPost(postId: string) {
     // Set the editedText property to the current text of the post
     this.editedText = this.post.text;
+    // Imposta la variabile isEditing su true
+    this.isEditing = true;
   }
 
   savePost(postId: string, editedText: string) {
     // Send a request to your server to update the post's text in your database
     this.postService.updatePost(this.post._id, { text: this.editedText }).subscribe((data) => {
       console.log(data);
+      // Imposta la variabile isEditing su false
+      this.isEditing = false;
     });
   }
 }
