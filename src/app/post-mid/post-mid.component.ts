@@ -18,7 +18,7 @@ export class PostMidComponent implements OnInit {
   isComment: boolean = false;
   postId!: string;
   comments!: IComment[];
-  currentUserId!: string; // Aggiungi qui la definizione della proprietà currentUserId
+  currentUserId!: string;
 
   constructor(
     private postService: PostService,
@@ -29,7 +29,7 @@ export class PostMidComponent implements OnInit {
   profilo!: IProfile;
 
   ngOnInit() {
-    this.svcSvc.getMe().subscribe(profile => {
+    this.svcSvc.getMe().subscribe((profile) => {
       this.currentUserId = profile._id; // Assegna il valore dell'ID dell'utente corrente alla proprietà currentUserId
     });
   }
@@ -65,5 +65,20 @@ export class PostMidComponent implements OnInit {
     this.svcSvc.getMe().subscribe((profilo) => (this.profilo = profilo));
     this.isComment = !this.isComment;
     this.getComment(this.post._id);
+  }
+
+  editPost(post: IPost) {
+    // Set the isEditing property of the post to true
+    post.isEditing = true;
+  }
+
+  savePost(post: IPost) {
+    // Set the isEditing property of the post to false
+    post.isEditing = false;
+
+    // Send a request to your server to update the post's text in your database
+    this.postService.updatePost(post._id, { text: post.text }).subscribe((data) => {
+      console.log(data);
+    });
   }
 }

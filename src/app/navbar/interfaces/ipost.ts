@@ -8,4 +8,5 @@ export interface IPost {
   username: string;
   __v: number;
   _id: string;
+  isEditing?: boolean;
 }
