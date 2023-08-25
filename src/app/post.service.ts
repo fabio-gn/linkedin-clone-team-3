@@ -44,7 +44,7 @@ export class PostService {
     return this.http.put<any>(`${this.apiUrl}${postId}`, post, { headers });
   }
 
-  deletePost(postId: Partial<IPost>): Observable<any> {
+  deletePost(postId: IPost): Observable<any> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authToken}`,
     });

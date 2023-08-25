@@ -55,7 +55,7 @@ export class PostMidComponent implements OnInit {
     });
   }
 
-  deletePost(postId: Partial<IPost>) {
+  deletePost(postId: IPost) {
     console.log('deletePost called with postId:', postId);
     if (confirm("Sei sicuro di voler eliminare questa esperienza?")) {
       this.postService.deletePost(postId).subscribe(() => {
