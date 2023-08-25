@@ -29,7 +29,10 @@
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li>
-          <button (click)="updatePost(post._id, newText)" class="dropdown-item">
+          <button
+            (click)="updatePost(post._id, editedText)"
+            class="dropdown-item"
+          >
             Edit
           </button>
         </li>
@@ -153,14 +156,11 @@
         </svg>
       </button>
     </div>
-
-
-
   </div>
 
   <!-- aggiungi html pre input commento -->
   <div *ngIf="isComment === true">
-    <p style="color:rgba(0,0,0,0.6)">commenti</p>
+    <p style="color: rgba(0, 0, 0, 0.6)">commenti</p>
     <app-comment
       *ngFor="let comment of comments"
       [comment]="comment"
@@ -168,5 +168,3 @@
     ></app-comment>
   </div>
 </div>
-
-
