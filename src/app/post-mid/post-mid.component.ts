@@ -12,23 +12,27 @@ import { PostService } from '../post.service';
   styleUrls: ['./post-mid.component.scss'],
 })
 export class PostMidComponent implements OnInit {
-
   @Input() post!: IPost;
   newText: string = '';
   posts: IPost[] = [];
   isComment: boolean = false;
   postId!: string;
   comments!: IComment[];
+  currentUserId!: string; // Aggiungi qui la definizione della proprietà currentUserId
 
   constructor(
     private postService: PostService,
     private commentsvc: CommentService,
     private svcSvc: ServiceService
-  ) {}
+  ) { }
 
   profilo!: IProfile;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.svcSvc.getMe().subscribe(profile => {
+      this.currentUserId = profile._id; // Assegna il valore dell'ID dell'utente corrente alla proprietà currentUserId
+    });
+  }
 
   updatePost(postId: string, text: string) {
     console.log('updatePost called with postId:', postId, 'and text:', text);
