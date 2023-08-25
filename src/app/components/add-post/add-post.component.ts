@@ -20,15 +20,17 @@ export class AddPostComponent {
     private modalService: NgbModal,
     private fb: FormBuilder,
     private postSvc: PostService
-  ) {}
+  ) {
+    this.srv.me.asObservable().subscribe((me) => {
+      this.profilo = me;
+    });
+  }
 
   profilo!: IProfile;
   posts!: IPost[];
   form!: FormGroup;
 
   ngOnInit() {
-    this.srv.getMe().subscribe((profilo) => (this.profilo = profilo));
-    this.postSvc.getPosts().subscribe((posts) => (this.posts = posts));
     this.form = this.fb.group({
       text: '',
     });

@@ -16,7 +16,7 @@
     <p>
       {{ post.text }}
     </p>
-    <div *ngIf="post.user._id === currentUserId" class="dropdown">
+    <div *ngIf="post.user._id === profilo._id" class="dropdown">
       <button
         class="btn btn-secondary dropdown-toggle"
         type="button"
@@ -121,10 +121,14 @@
   >
     <div
       class="profile-image border rounded-circle"
-      style="background-image: url('{{ profilo.image }}')"
+      style="background-image: url('{{ profilo?.image || null }}')"
     ></div>
     <div class="flex-grow d-flex rounded-pill border ps-4">
-      <form class="flex-grow no-wrap d-flex" [formGroup]="form" (ngSubmit)="addComment()">
+      <form
+        class="flex-grow no-wrap d-flex"
+        [formGroup]="form"
+        (ngSubmit)="addComment()"
+      >
         <input
           class="comment-input flex-grow"
           type="text"

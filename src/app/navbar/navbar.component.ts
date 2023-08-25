@@ -10,15 +10,15 @@ import { ServiceService } from '../service.service';
 })
 export class NavbarComponent {
   search: boolean = false;
-  profilo!:IProfile
+  profilo!: IProfile;
 
   constructor(
     private svc: ServiceService,
     private profileDataService: ProfileDataService
-  ){}
-
-  ngOnInit(){
-    this.svc.getMe().subscribe(profilo => this.profilo = profilo)
+  ) {
+    this.svc.me.asObservable().subscribe((me) => {
+      this.profilo = me;
+    });
   }
 
   searchToggle(): void {
@@ -27,8 +27,7 @@ export class NavbarComponent {
 
   updateMainProfileData(): void {
     this.svc.getMe().subscribe((profile: IProfile) => {
-      this.profileDataService.setSelectedProfile(profile)
-    })
+      this.profileDataService.setSelectedProfile(profile);
+    });
   }
-
 }
