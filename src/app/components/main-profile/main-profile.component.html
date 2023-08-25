@@ -2,8 +2,11 @@
   <div
     class="rounded-top-3"
     id="banner"
-    [style.backgroundImage]="'url(' + selectedCoverImage + ')'"
-    [style.background]="selectedCoverImage ? 'none' : 'gray'"
+    [style.backgroundImage]="
+      selectedCoverImage
+        ? 'url(' + selectedCoverImage + ')'
+        : 'url(https://legaltracking.com.mx/wp-content/uploads/2020/01/placeholder-1013x675.png)'
+    "
   >
     <div id="cover" class="circle-border">
       <label for="coverInput">
@@ -51,17 +54,12 @@
           ></path>
         </svg>
       </div>
-      <input
-        id="imageInput"
-        type="file"
-        hidden
-        (change)="handleImageChange($event)"
-      />
       <img
         *ngIf="selectedImage"
         [src]="selectedImage"
         alt="Selected Image"
         class="img-fluid"
+        (click)="openModal(imageModal)"
       />
     </label>
   </div>
@@ -193,3 +191,33 @@
     </button>
   </div>
 </ng-template>
+
+<ng-template #imageModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Seleziona una nuova immagine</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <div>
+        <label for="editedImage">Immagine</label>
+        <input
+          type="file"
+          class="form-control"
+          id="editedImage"
+          (change)="handleImageChange($event)"
+        />
+      </div>
+    </div>
+    <button class="btn btn-outline-secondary mt-3" (click)="editImage()">
+      Salva Modifiche
+    </button>
+  </div>
+</ng-template>
+
+<!-- [(ngModel)]="editedProfile.image" -->

@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { CommentService } from './../comment.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { IPost } from '../interfaces/ipost';
 import { ServiceService } from '../service.service';
 import { IProfile } from '../interfaces/profile';
@@ -6,30 +7,25 @@ import { IProfile } from '../interfaces/profile';
 @Component({
   selector: 'app-post-mid',
   templateUrl: './post-mid.component.html',
-  styleUrls: ['./post-mid.component.scss']
+  styleUrls: ['./post-mid.component.scss'],
 })
-export class PostMidComponent {
-@Input() post!: IPost
+export class PostMidComponent implements OnInit {
+  @Input() post!: IPost;
+  isComment: boolean = false;
+  postId!: string;
 
+  constructor(private svc: CommentService) {}
 
+  ngOnInit() {
+    // this.getComment();
+  }
 
+  getComment() {
+    this.postId = this.post._id;
+    this.svc.getComment(this.postId).subscribe((data) => console.log(data));
+  }
+
+  commentToggle() {
+    this.isComment = !this.isComment;
+  }
 }
-
-
-
-
-
-
-
-
-// constructor(private svc: ServiceService){
-
-// }
-
-// profilo!:IProfile
-// collegamenti!:IProfile[]
-// ngOnInit(){
-//   this.svc.getMe().subscribe(profilo => this.profilo = profilo)
-//   this.svc.getAll().subscribe(collegamenti => this.collegamenti = collegamenti)
-// }
-// }

@@ -1,0 +1,14 @@
+
+<div class="container rounded border">
+  <div class="d-flex justify-content-between pt-2">
+    <h5>LinkedIn Notizie</h5>
+    <i class="bi bi-info-square-fill"></i>
+  </div>
+<ul>
+  <li *ngFor="let notizia of arrayNotizie">
+    <h6>{{notizia.titolo}}</h6>
+    <p>{{notizia.data}}</p>
+
+  </li>
+</ul>
+</div>
