@@ -23,6 +23,7 @@ import { PostMidComponent } from './post-mid/post-mid.component';
 import { HomeprofilecardComponent } from './components/homeprofilecard/homeprofilecard.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { NotizieAsideComponent } from './components/notizie-aside/notizie-aside.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { NotizieAsideComponent } from './components/notizie-aside/notizie-aside.
     HomeprofilecardComponent,
     HomeprofilecardComponent,
     AddPostComponent,
-    NotizieAsideComponent
+    NotizieAsideComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { IPost } from '../interfaces/ipost';
 import { ServiceService } from '../service.service';
 import { IProfile } from '../interfaces/profile';
+import { IComment } from '../interfaces/icomment';
 
 @Component({
   selector: 'app-post-mid',
@@ -11,22 +12,21 @@ import { IProfile } from '../interfaces/profile';
 })
 export class PostMidComponent implements OnInit {
   @Input() post!: IPost;
+  comments!: IComment[];
   isComment: boolean = false;
-
-  postId!: string;
 
   constructor(private svc: CommentService) {}
 
-  ngOnInit() {
-    // this.getComment();
-  }
+  ngOnInit() {}
 
-  getComment() {
-    this.postId = this.post._id;
-    this.svc.getComment(this.postId).subscribe((data) => console.log(data));
+  getComment(id: string) {
+    this.svc
+      .getComment(id)
+      .subscribe((data) => ((this.comments = data), console.log(data)));
   }
 
   commentToggle() {
     this.isComment = !this.isComment;
+    this.getComment(this.post._id);
   }
 }

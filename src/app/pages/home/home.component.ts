@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private Svc: PostService) { }
+  constructor(private Svc: PostService) {}
 
   posts: IPost[] = [];
   newPost!: IPost;
@@ -18,9 +18,11 @@ export class HomeComponent implements OnInit {
   }
 
   getPost() {
-    this.Svc.getPosts().subscribe(
-      (data) => ((this.posts = data), console.log(data))
-    );
+    this.Svc.getPosts().subscribe((data) => {
+      let lastPost = data.sort();
+      lastPost.slice(0, 30);
+      this.posts = lastPost;
+    });
   }
 
   postPost(post: IPost) {
