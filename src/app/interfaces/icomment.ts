@@ -1,3 +1,5 @@
 export interface IComment {
-  text: string;
+  comment: string;
+  rate: string;
+  elementId: string;
 }

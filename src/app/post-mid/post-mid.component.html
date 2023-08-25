@@ -17,8 +17,30 @@
     <p>
       {{ post.text }}
     </p>
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="bi bi-pencil"></i>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li>
+          <button (click)="updatePost(post._id, newText)" class="dropdown-item">
+            Edit
+          </button>
+        </li>
+        <li>
+          <button (click)="deletePost(post._id)" class="dropdown-item">
+            Delete
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
-
   <div>
     <button type="button" class="btn">
       <svg

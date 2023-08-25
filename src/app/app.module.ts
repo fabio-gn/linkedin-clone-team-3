@@ -22,6 +22,7 @@ import { ModifyComponent } from './pages/modify/modify.component';
 import { PostMidComponent } from './post-mid/post-mid.component';
 import { HomeprofilecardComponent } from './components/homeprofilecard/homeprofilecard.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
+import { FooterHomeComponent } from './components/footer-home/footer-home.component';
 import { NotizieAsideComponent } from './components/notizie-aside/notizie-aside.component';
 import { CommentComponent } from './comment/comment.component';
 
@@ -44,7 +45,9 @@ import { CommentComponent } from './comment/comment.component';
     HomeprofilecardComponent,
     AddPostComponent,
     NotizieAsideComponent,
-    CommentComponent
+    CommentComponent,
+    FooterHomeComponent,
+    NotizieAsideComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,12 +55,9 @@ import { CommentComponent } from './comment/comment.component';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [
-    DatePipe,
-    CustomDatePipe
-  ],
+  providers: [DatePipe, CustomDatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

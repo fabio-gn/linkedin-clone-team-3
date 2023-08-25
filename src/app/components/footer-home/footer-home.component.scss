@@ -1,0 +1,51 @@
+ul {
+  list-style: none;
+  padding: 0px;
+}
+
+
+a{
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  color: rgb(116, 116, 116)
+}
+
+a:hover {
+  color: blue;
+}
+
+p {
+  font-size: 13px;
+}
+
+#btn-prv{
+  font-size: 13px;
+  font-weight: 600;
+  color: rgb(116, 116, 116)
+
+}
+
+#btn-prv:hover{
+  color: blue;
+
+}
+
+svg {
+  color:#0a66c2
+}
+
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+li {
+  margin: 0px 10px;
+}
+p {
+  display: flex;
+    align-items: center;
+}
