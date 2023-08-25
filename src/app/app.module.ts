@@ -22,7 +22,9 @@ import { ModifyComponent } from './pages/modify/modify.component';
 import { PostMidComponent } from './post-mid/post-mid.component';
 import { HomeprofilecardComponent } from './components/homeprofilecard/homeprofilecard.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
+import { FooterHomeComponent } from './components/footer-home/footer-home.component';
 import { NotizieAsideComponent } from './components/notizie-aside/notizie-aside.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,10 @@ import { NotizieAsideComponent } from './components/notizie-aside/notizie-aside.
     HomeprofilecardComponent,
     HomeprofilecardComponent,
     AddPostComponent,
-    NotizieAsideComponent
+    NotizieAsideComponent,
+    CommentComponent,
+    FooterHomeComponent,
+    NotizieAsideComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,12 +55,9 @@ import { NotizieAsideComponent } from './components/notizie-aside/notizie-aside.
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [
-    DatePipe,
-    CustomDatePipe
-  ],
+  providers: [DatePipe, CustomDatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
