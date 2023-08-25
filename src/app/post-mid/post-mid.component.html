@@ -17,7 +17,7 @@
     <p>
       {{ post.text }}
     </p>
-    <div class="dropdown">
+    <div *ngIf="post.user._id === currentUserId" class="dropdown">
       <button
         class="btn btn-secondary dropdown-toggle"
         type="button"
