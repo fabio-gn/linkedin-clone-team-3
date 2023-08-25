@@ -1,5 +1,5 @@
 import { CommentService } from './../comment.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IPost } from '../interfaces/ipost';
 import { ServiceService } from '../service.service';
 import { IProfile } from '../interfaces/profile';
@@ -15,6 +15,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class PostMidComponent implements OnInit {
   @Input() post!: IPost;
   editedText: string = '';
+  @Output() addNewComment = new EventEmitter<IComment>();
+
+  newText: string = '';
   newComment: string = '';
   posts: IPost[] = [];
   isComment: boolean = false;
@@ -73,9 +76,11 @@ export class PostMidComponent implements OnInit {
   }
 
   addComment() {
-    this.commentsvc
-      .postComment(this.form.value)
-      .subscribe((data) => console.log(data));
+    // this.comments.unshift(this.form.value);
+    this.commentsvc.postComment(this.form.value).subscribe((res) => {
+      this.comments.unshift(res);
+      this.form.reset();
+    });
   }
 
   editPost(postId: string) {
