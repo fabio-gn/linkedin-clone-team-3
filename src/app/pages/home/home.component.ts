@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  deletePost(postId: Partial<IPost>) {
+  deletePost(postId:IPost) {
     this.Svc.deletePost(postId).subscribe(() => {
       this.getPost();
     });
