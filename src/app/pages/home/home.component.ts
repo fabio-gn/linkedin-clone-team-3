@@ -1,4 +1,5 @@
-import { IPost } from 'src/app/interfaces/ipost';
+import { IPost } from './../../interfaces/ipost';
+
 import { PostService } from './../../post.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 
@@ -67,5 +68,9 @@ export class HomeComponent implements OnInit {
     this.Svc.deletePost(postId).subscribe(() => {
       this.getPost();
     });
+  }
+
+  takeNewPost(post: IPost) {
+    this.posts.unshift(post);
   }
 }

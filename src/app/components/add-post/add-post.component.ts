@@ -1,5 +1,5 @@
 import { ServiceService } from 'src/app/service.service';
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { IProfile } from 'src/app/interfaces/profile';
 import { IPost } from 'src/app/interfaces/ipost';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -12,6 +12,8 @@ import { PostService } from 'src/app/post.service';
   styleUrls: ['./add-post.component.scss'],
 })
 export class AddPostComponent {
+  @Output() newPost = new EventEmitter<IPost>();
+
   constructor(
     private srv: ServiceService,
     private modalService: NgbModal,
@@ -19,31 +21,27 @@ export class AddPostComponent {
     private postSvc: PostService
   ) {}
 
-  profilo!: IProfile
-  posts!: IPost[]
-  form!:FormGroup
+  profilo!: IProfile;
+  posts!: IPost[];
+  form!: FormGroup;
 
-  ngOnInit(){
-    this.srv.getMe().subscribe(profilo => this.profilo = profilo)
-    this.postSvc.getPosts().subscribe( posts => this.posts = posts)
+  ngOnInit() {
+    this.srv.getMe().subscribe((profilo) => (this.profilo = profilo));
+    this.postSvc.getPosts().subscribe((posts) => (this.posts = posts));
     this.form = this.fb.group({
-      text: ''
-    })
+      text: '',
+    });
   }
 
   openModal(content: any) {
     this.modalService.open(content);
   }
 
-
   posta() {
-    this.postSvc.createPost(this.form.value).subscribe(() => {
-      this.modalService.dismissAll()
-      this.form.reset()
-      this.postSvc.getPosts().subscribe(posts => {
-        this.posts = posts
-      })
-    })
+    this.postSvc.createPost(this.form.value).subscribe((res) => {
+      this.modalService.dismissAll();
+      this.newPost.emit(res);
+      this.form.reset();
+    });
   }
-
 }
