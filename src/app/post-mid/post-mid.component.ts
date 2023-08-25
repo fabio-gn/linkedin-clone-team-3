@@ -39,7 +39,7 @@ export class PostMidComponent implements OnInit {
     });
   }
 
-  @Output() updatedPosts = new EventEmitter<any>();
+  @Output() updatedPosts = new EventEmitter<IPost>();
 
   ngOnInit() {
     this.form = this.fb.group({

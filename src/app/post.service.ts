@@ -11,7 +11,7 @@ export class PostService {
   private authToken =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGUzMmU0YjFmMTc1YzAwMTRjNTU4ZjAiLCJpYXQiOjE2OTI2MTAxMjMsImV4cCI6MTY5MzgxOTcyM30.ETmqHK7g4xFJsEHHrxxFrIvhpsdo4QBKPAyca7RcGOE';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getPosts(): Observable<IPost[]> {
     const headers = new HttpHeaders({
@@ -48,6 +48,10 @@ export class PostService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authToken}`,
     });
-    return this.http.delete<void>(`${this.apiUrl}${postId._id}`, { headers });
+
+    return this.http.delete(`${this.apiUrl}${postId._id}`, {
+      headers,
+      responseType: 'text',
+    });
   }
 }
