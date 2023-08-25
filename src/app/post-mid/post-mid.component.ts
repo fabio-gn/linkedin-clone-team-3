@@ -24,7 +24,7 @@ export class PostMidComponent implements OnInit {
     private commentsvc: CommentService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 
   updatePost(postId: string, text: string) {
     console.log('updatePost called with postId:', postId, 'and text:', text);
