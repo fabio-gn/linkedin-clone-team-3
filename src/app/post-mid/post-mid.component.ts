@@ -36,6 +36,8 @@ export class PostMidComponent implements OnInit {
     private fb: FormBuilder
   ) { }
 
+  @Output() updatedPosts = new EventEmitter<any>()
+
   ngOnInit() {
     this.svcSvc.getMe().subscribe(profile => {
       this.currentUserId = profile._id; // Assegna il valore dell'ID dell'utente corrente alla proprietà currentUserId
@@ -53,14 +55,14 @@ export class PostMidComponent implements OnInit {
     });
   }
 
-  deletePost(postId: string) {
+  deletePost(postId: Partial<IPost>) {
     console.log('deletePost called with postId:', postId);
-    this.postService.deletePost(postId).subscribe(() => {
-      // Remove the post from an array of posts
-      this.posts = this.posts.filter((post: IPost) => post._id !== postId);
-      // Display a message to the user
-      alert('Post deleted successfully!');
-    });
+    if (confirm("Sei sicuro di voler eliminare questa esperienza?")) {
+      this.postService.deletePost(postId).subscribe(() => {
+        this.updatedPosts.emit(postId);
+        alert('Post cancellato con successo!');
+      });
+    }
   }
 
   getComment(id: string) {
@@ -72,7 +74,6 @@ export class PostMidComponent implements OnInit {
   }
 
   commentToggle() {
-    this.svcSvc.getMe().subscribe((profilo) => (this.profilo = profilo));
     this.isComment = !this.isComment;
     this.getComment(this.post._id);
   }
