@@ -10,6 +10,7 @@ import { IProfile } from '../interfaces/profile';
   styleUrls: ['./post-mid.component.scss'],
 })
 export class PostMidComponent implements OnInit {
+
   @Input() post!: IPost;
   isComment: boolean = false;
   postId!: string;
