@@ -108,7 +108,7 @@
   </div>
   <div
     *ngIf="isComment"
-    class="sezione-aggiungi-commento d-flex align-items-center gap-2"
+    class="sezione-aggiungi-commento d-flex align-items-center gap-2 my-2"
   >
     <div
       class="profile-image border rounded-circle"
@@ -153,13 +153,20 @@
         </svg>
       </button>
     </div>
+
+
+
+  </div>
+
+  <!-- aggiungi html pre input commento -->
+  <div *ngIf="isComment === true">
+    <p style="color:rgba(0,0,0,0.6)">commenti</p>
+    <app-comment
+      *ngFor="let comment of comments"
+      [comment]="comment"
+      [post]="post"
+    ></app-comment>
   </div>
 </div>
-<!-- aggiungi html pre input commento -->
-<div *ngIf="isComment === true">
-  <app-comment
-    *ngFor="let comment of comments"
-    [comment]="comment"
-    [post]="post"
-  ></app-comment>
-</div>
+
+
