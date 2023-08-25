@@ -19,7 +19,6 @@ export class PostMidComponent implements OnInit {
   postId!: string;
   comments!: IComment[];
   currentUserId!: string;
-  isEditing?: boolean;
 
   constructor(
     private postService: PostService,
