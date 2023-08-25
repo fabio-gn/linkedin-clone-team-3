@@ -22,6 +22,7 @@ import { ModifyComponent } from './pages/modify/modify.component';
 import { PostMidComponent } from './post-mid/post-mid.component';
 import { HomeprofilecardComponent } from './components/homeprofilecard/homeprofilecard.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
+import { FooterHomeComponent } from './components/footer-home/footer-home.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AddPostComponent } from './components/add-post/add-post.component';
     PostMidComponent,
     HomeprofilecardComponent,
     HomeprofilecardComponent,
-    AddPostComponent
+    AddPostComponent,
+    FooterHomeComponent
   ],
   imports: [
     BrowserModule,
