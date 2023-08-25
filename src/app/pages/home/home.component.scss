@@ -1,1 +1,9 @@
 
+@media screen and (max-width: 780px){
+  .profilo-card{
+    position: static !important;
+  }
+  app-footer-home{
+    position: static !important;
+  }
+}

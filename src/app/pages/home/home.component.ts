@@ -1,6 +1,5 @@
 import { IComment } from 'src/app/interfaces/icomment';
 import { IPost } from './../../interfaces/ipost';
-
 import { PostService } from './../../post.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 
@@ -65,7 +64,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  deletePost(postId: string) {
+  deletePost(postId:IPost) {
     this.Svc.deletePost(postId).subscribe(() => {
       this.getPost();
     });
@@ -73,5 +72,10 @@ export class HomeComponent implements OnInit {
 
   takeNewPost(post: IPost) {
     this.posts.unshift(post);
+  }
+
+  updatedPosts(post: IPost){
+    this.posts = this.posts.filter(el => el._id !== post._id)
+    console.log(post)
   }
 }

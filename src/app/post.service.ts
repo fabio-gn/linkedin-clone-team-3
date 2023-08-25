@@ -11,7 +11,7 @@ export class PostService {
   private authToken =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGUzMmU0YjFmMTc1YzAwMTRjNTU4ZjAiLCJpYXQiOjE2OTI2MTAxMjMsImV4cCI6MTY5MzgxOTcyM30.ETmqHK7g4xFJsEHHrxxFrIvhpsdo4QBKPAyca7RcGOE';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getPosts(): Observable<IPost[]> {
     const headers = new HttpHeaders({
@@ -33,7 +33,6 @@ export class PostService {
       'Content-Type': 'application/json',
     });
     const body = JSON.stringify(post);
-
     return this.http.post<IPost>(this.apiUrl, body, { headers });
   }
 
@@ -45,10 +44,14 @@ export class PostService {
     return this.http.put<any>(`${this.apiUrl}${postId}`, post, { headers });
   }
 
-  deletePost(postId: string): Observable<void> {
+  deletePost(postId: IPost): Observable<any> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authToken}`,
     });
-    return this.http.delete<void>(`${this.apiUrl}${postId}`, { headers });
+
+    return this.http.delete(`${this.apiUrl}${postId._id}`, {
+      headers,
+      responseType: 'text',
+    });
   }
 }
