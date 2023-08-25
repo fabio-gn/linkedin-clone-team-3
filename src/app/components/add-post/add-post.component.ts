@@ -5,6 +5,7 @@ import { IPost } from 'src/app/interfaces/ipost';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PostService } from 'src/app/post.service';
+import { IComment } from 'src/app/interfaces/icomment';
 
 @Component({
   selector: 'app-add-post',

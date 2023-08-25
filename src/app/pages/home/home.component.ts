@@ -1,3 +1,4 @@
+import { IComment } from 'src/app/interfaces/icomment';
 import { IPost } from './../../interfaces/ipost';
 
 import { PostService } from './../../post.service';
