@@ -33,7 +33,6 @@ export class PostService {
       'Content-Type': 'application/json',
     });
     const body = JSON.stringify(post);
-
     return this.http.post<IPost>(this.apiUrl, body, { headers });
   }
 
@@ -45,10 +44,10 @@ export class PostService {
     return this.http.put<any>(`${this.apiUrl}${postId}`, post, { headers });
   }
 
-  deletePost(postId: string): Observable<void> {
+  deletePost(postId: IPost): Observable<any> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authToken}`,
     });
-    return this.http.delete<void>(`${this.apiUrl}${postId}`, { headers });
+    return this.http.delete<void>(`${this.apiUrl}${postId._id}`, { headers });
   }
 }

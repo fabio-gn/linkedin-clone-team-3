@@ -1,5 +1,5 @@
 import { CommentService } from './../comment.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IPost } from '../interfaces/ipost';
 import { ServiceService } from '../service.service';
 import { IProfile } from '../interfaces/profile';
@@ -14,31 +14,33 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class PostMidComponent implements OnInit {
   @Input() post!: IPost;
+  editedText: string = '';
+  @Output() addNewComment = new EventEmitter<IComment>();
+
   newText: string = '';
   newComment: string = '';
   posts: IPost[] = [];
   isComment: boolean = false;
   postId!: string;
   comments!: IComment[];
-  currentUserId!: string; // Aggiungi qui la definizione della proprietà currentUserId
+  currentUserId!: string;
+  isEditing = false;
   profilo!: IProfile;
   form!: FormGroup;
+
 
   constructor(
     private postService: PostService,
     private commentsvc: CommentService,
     private svcSvc: ServiceService,
     private fb: FormBuilder
-  ) {}
+  ) { }
+
+  @Output() updatedPosts = new EventEmitter<any>()
 
   ngOnInit() {
-    this.svcSvc.getMe().subscribe((profile) => {
+    this.svcSvc.getMe().subscribe(profile => {
       this.currentUserId = profile._id; // Assegna il valore dell'ID dell'utente corrente alla proprietà currentUserId
-    });
-    this.form = this.fb.group({
-      comment: '',
-      elementId: this.post._id,
-      rate: 3,
     });
   }
 
@@ -53,31 +55,50 @@ export class PostMidComponent implements OnInit {
     });
   }
 
-  deletePost(postId: string) {
+  deletePost(postId: IPost) {
     console.log('deletePost called with postId:', postId);
-    this.postService.deletePost(postId).subscribe(() => {
-      // Remove the post from an array of posts
-      this.posts = this.posts.filter((post: IPost) => post._id !== postId);
-      // Display a message to the user
-      alert('Post deleted successfully!');
-    });
+    if (confirm("Sei sicuro di voler eliminare questa esperienza?")) {
+      this.postService.deletePost(postId).subscribe(() => {
+        this.updatedPosts.emit(postId);
+        alert('Post cancellato con successo!');
+      });
+    }
   }
 
   getComment(id: string) {
     this.commentsvc
       .getComment(id)
-      .subscribe((data) => ((this.comments = data), console.log(data)));
+      .subscribe(
+        (data) => ((this.comments = data.reverse()), console.log(data))
+      );
   }
 
   commentToggle() {
-    this.svcSvc.getMe().subscribe((profilo) => (this.profilo = profilo));
     this.isComment = !this.isComment;
     this.getComment(this.post._id);
   }
 
   addComment() {
-    this.commentsvc
-      .postComment(this.form.value)
-      .subscribe((data) => console.log(data));
+    // this.comments.unshift(this.form.value);
+    this.commentsvc.postComment(this.form.value).subscribe((res) => {
+      this.comments.unshift(res);
+      this.form.reset();
+    });
+  }
+
+  editPost(postId: string) {
+    // Set the editedText property to the current text of the post
+    this.editedText = this.post.text;
+    // Imposta la variabile isEditing su true
+    this.isEditing = true;
+  }
+
+  savePost(postId: string, editedText: string) {
+    // Send a request to your server to update the post's text in your database
+    this.postService.updatePost(this.post._id, { text: this.editedText }).subscribe((data) => {
+      console.log(data);
+      // Imposta la variabile isEditing su false
+      this.isEditing = false;
+    });
   }
 }
