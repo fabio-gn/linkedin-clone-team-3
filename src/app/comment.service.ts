@@ -26,10 +26,12 @@ export class CommentService {
     return this.http.delete(this.apiUrl + id, { headers });
   }
 
-  postComment(comment: IComment): Observable<IComment> {
+  postComment(comment: Partial<IComment>): Observable<IComment> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authToken}`,
+      'Content-Type': 'application/json',
     });
+    // let body = JSON.stringify(comment);
     return this.http.post<IComment>(this.apiUrl, comment, { headers });
   }
 
