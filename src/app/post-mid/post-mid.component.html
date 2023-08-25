@@ -115,10 +115,16 @@
       style="background-image: url('{{ profilo.image }}')"
     ></div>
     <div class="flex-grow d-flex rounded-pill border ps-4">
-      <input class="comment-input flex-grow" type="text" />
-      <button class="comment-button rounded-circle">
-        <i class="bi bi-send-plus"></i>
-      </button>
+      <form [formGroup]="form" (ngSubmit)="addComment()">
+        <input
+          class="comment-input flex-grow"
+          type="text"
+          formControlName="comment"
+        />
+        <button class="comment-button rounded-circle">
+          <i class="bi bi-send-plus"></i>
+        </button>
+      </form>
 
       <button class="comment-button rounded-circle">
         <svg
@@ -153,14 +159,10 @@
         </svg>
       </button>
     </div>
-
-
-
   </div>
 
-  <!-- aggiungi html pre input commento -->
   <div *ngIf="isComment === true">
-    <p style="color:rgba(0,0,0,0.6)">commenti</p>
+    <p style="color: rgba(0, 0, 0, 0.6)">commenti</p>
     <app-comment
       *ngFor="let comment of comments"
       [comment]="comment"
@@ -168,5 +170,3 @@
     ></app-comment>
   </div>
 </div>
-
-

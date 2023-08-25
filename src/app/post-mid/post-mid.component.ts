@@ -5,6 +5,7 @@ import { ServiceService } from '../service.service';
 import { IProfile } from '../interfaces/profile';
 import { IComment } from '../interfaces/icomment';
 import { PostService } from '../post.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-post-mid',
@@ -14,23 +15,30 @@ import { PostService } from '../post.service';
 export class PostMidComponent implements OnInit {
   @Input() post!: IPost;
   newText: string = '';
+  newComment: string = '';
   posts: IPost[] = [];
   isComment: boolean = false;
   postId!: string;
   comments!: IComment[];
   currentUserId!: string; // Aggiungi qui la definizione della proprietà currentUserId
+  profilo!: IProfile;
+  form!: FormGroup;
 
   constructor(
     private postService: PostService,
     private commentsvc: CommentService,
-    private svcSvc: ServiceService
-  ) { }
-
-  profilo!: IProfile;
+    private svcSvc: ServiceService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {
-    this.svcSvc.getMe().subscribe(profile => {
+    this.svcSvc.getMe().subscribe((profile) => {
       this.currentUserId = profile._id; // Assegna il valore dell'ID dell'utente corrente alla proprietà currentUserId
+    });
+    this.form = this.fb.group({
+      comment: '',
+      elementId: this.post._id,
+      rate: 3,
     });
   }
 
@@ -65,5 +73,11 @@ export class PostMidComponent implements OnInit {
     this.svcSvc.getMe().subscribe((profilo) => (this.profilo = profilo));
     this.isComment = !this.isComment;
     this.getComment(this.post._id);
+  }
+
+  addComment() {
+    this.commentsvc
+      .postComment(this.form.value)
+      .subscribe((data) => console.log(data));
   }
 }
