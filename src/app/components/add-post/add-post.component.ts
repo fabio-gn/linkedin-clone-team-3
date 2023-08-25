@@ -19,31 +19,31 @@ export class AddPostComponent {
     private postSvc: PostService
   ) {}
 
-  profilo!: IProfile;
-  posts!: IPost[];
+  profilo!: IProfile
+  posts!: IPost[]
+  form!:FormGroup
 
-  ngOnInit() {
-    this.srv.getMe().subscribe((profilo) => (this.profilo = profilo));
-    this.postSvc.getPosts().subscribe((posts) => (this.posts = posts));
+  ngOnInit(){
+    this.srv.getMe().subscribe(profilo => this.profilo = profilo)
+    this.postSvc.getPosts().subscribe( posts => this.posts = posts)
+    this.form = this.fb.group({
+      text: ''
+    })
   }
-
-  formData: Partial<IPost> = {
-    text: '',
-  };
 
   openModal(content: any) {
     this.modalService.open(content);
   }
 
-  form!: FormGroup;
 
   posta() {
     this.postSvc.createPost(this.form.value).subscribe(() => {
-      this.modalService.dismissAll();
-      this.postSvc.getPosts().subscribe((posts) => {
-        this.posts = posts;
-        this.form.reset();
-      });
-    });
+      this.modalService.dismissAll()
+      this.form.reset()
+      this.postSvc.getPosts().subscribe(posts => {
+        this.posts = posts
+      })
+    })
   }
+
 }

@@ -12,6 +12,7 @@ import { PostService } from '../post.service';
   styleUrls: ['./post-mid.component.scss'],
 })
 export class PostMidComponent implements OnInit {
+
   @Input() post!: IPost;
   newText: string = '';
   posts: IPost[] = [];
