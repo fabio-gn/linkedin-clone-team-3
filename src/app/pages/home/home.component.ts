@@ -10,10 +10,11 @@ import { Component, HostListener, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   constructor(private Svc: PostService) {}
 
+  allPosts: IPost[] = [];
   posts: IPost[] = [];
   newPost!: IPost;
-  offset = 0;
-  limit = 6;
+  offset = 10;
+  limit = 20;
 
   ngOnInit() {
     this.getPost();
@@ -21,9 +22,9 @@ export class HomeComponent implements OnInit {
 
   getPost() {
     this.Svc.getPosts().subscribe((data) => {
-      this.posts = data.reverse().slice(0, 30);
+      this.allPosts = data.reverse();
+      this.posts = this.allPosts.slice(0, 10);
     });
-    this.offset += this.limit;
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -41,10 +42,14 @@ export class HomeComponent implements OnInit {
       html.scrollHeight,
       html.offsetHeight
     );
+    console.log(docHeight);
+
     const windowBottom = windowHeight + window.pageYOffset;
 
     if (windowBottom >= docHeight - 100) {
-      this.getPost();
+      this.posts.push(...this.allPosts.slice(this.offset, this.limit));
+      this.offset += 10;
+      this.limit += 10;
     }
   }
 
