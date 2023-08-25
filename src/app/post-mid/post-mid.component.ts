@@ -68,7 +68,9 @@ export class PostMidComponent implements OnInit {
   getComment(id: string) {
     this.commentsvc
       .getComment(id)
-      .subscribe((data) => ((this.comments = data), console.log(data)));
+      .subscribe(
+        (data) => ((this.comments = data.reverse()), console.log(data))
+      );
   }
 
   commentToggle() {
