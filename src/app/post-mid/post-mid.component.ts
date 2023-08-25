@@ -1,28 +1,50 @@
 import { CommentService } from './../comment.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { IPost } from '../interfaces/ipost';
-import { ServiceService } from '../service.service';
-import { IProfile } from '../interfaces/profile';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-post-mid',
   templateUrl: './post-mid.component.html',
   styleUrls: ['./post-mid.component.scss'],
 })
-export class PostMidComponent implements OnInit {
+// export class PostMidComponent implements OnInit {
+//   @Input() post!: IPost;
+// constructor(private svc: CommentService) {} - da importare 
+
+export class PostMidComponent {
   @Input() post!: IPost;
+  newText: string = '';
+  posts: IPost[] = [];
   isComment: boolean = false;
   postId!: string;
 
-  constructor(private svc: CommentService) {}
+  constructor(private postService: PostService, private commentsvc: CommentService) { }
 
-  ngOnInit() {
-    // this.getComment();
+  updatePost(postId: string, text: string) {
+    console.log('updatePost called with postId:', postId, 'and text:', text);
+    this.postService.updatePost(postId, { text }).subscribe((updatedPost) => {
+      // Update the UI to display the new text of the post
+      this.post.text = updatedPost.text;
+
+      // Display a message to the user
+      alert('Post updated successfully!');
+    });
+  }
+
+  deletePost(postId: string) {
+    console.log('deletePost called with postId:', postId);
+    this.postService.deletePost(postId).subscribe(() => {
+      // Remove the post from an array of posts
+      this.posts = this.posts.filter((post: IPost) => post._id !== postId);
+      // Display a message to the user
+      alert('Post deleted successfully!');
+    });
   }
 
   getComment() {
     this.postId = this.post._id;
-    this.svc.getComment(this.postId).subscribe((data) => console.log(data));
+    this.commentsvc.getComment(this.postId).subscribe((data) => console.log(data));
   }
 
   commentToggle() {
