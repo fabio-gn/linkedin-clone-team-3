@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   getPost() {
     this.Svc.getPosts().subscribe((data) => {
-      this.posts.push(...data);
+      this.posts = data.reverse().slice(0, 30);
     });
     this.offset += this.limit;
   }
