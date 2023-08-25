@@ -1,13 +1,15 @@
 <div class="d-flex gap-1 mt-2">
   <div
-      class="profile-image border rounded-circle mt-1"
-      style="background-image: url('../../assets/img/profile-placeholder.jpg')"
-    ></div>
-    <div class="comment-wrapper my-2 d-flex justify-content-between">
-      <div class="flex-grow">
-        <h6>{{ comment.author }}</h6>
-        <p>{{ comment.comment }}</p>
-      </div>
-      <p><i class="bi bi-three-dots"></i></p>
+    class="profile-image border rounded-circle mt-1"
+    style="background-image: url('../../assets/img/profile-placeholder.jpg')"
+  ></div>
+  <div class="comment-wrapper my-2 d-flex justify-content-between">
+    <div class="flex-grow">
+      <h6>{{ comment.author }}</h6>
+      <p>{{ comment.comment }}</p>
     </div>
+    <p><i class="bi bi-three-dots"></i></p>
+    <!-- Add a Delete button -->
+    <button (click)="deleteComment(comment.comment)">--> Delete</button>
+  </div>
 </div>
