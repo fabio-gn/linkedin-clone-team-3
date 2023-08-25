@@ -12,7 +12,6 @@ import { IProfile } from '../interfaces/profile';
 export class PostMidComponent implements OnInit {
   @Input() post!: IPost;
   isComment: boolean = false;
-
   postId!: string;
 
   constructor(private svc: CommentService) {}
