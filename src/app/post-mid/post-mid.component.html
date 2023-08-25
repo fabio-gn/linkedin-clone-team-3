@@ -115,7 +115,7 @@
       style="background-image: url('{{ profilo.image }}')"
     ></div>
     <div class="flex-grow d-flex rounded-pill border ps-4">
-      <form [formGroup]="form" (ngSubmit)="addComment()">
+      <form class="flex-grow no-wrap d-flex" [formGroup]="form" (ngSubmit)="addComment()">
         <input
           class="comment-input flex-grow"
           type="text"
