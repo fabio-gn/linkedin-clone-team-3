@@ -1,5 +1,5 @@
 <!-- class="w-75 me-3" -->
-<div class="container border rounded mt-3 p-3">
+<div id="post-section" class="container border rounded mt-3 p-3">
   <div class="d-flex">
     <div>
       <img class="border rounded-circle me-2" [src]="post.user.image" alt="" />
@@ -17,8 +17,30 @@
     <p>
       {{ post.text }}
     </p>
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="bi bi-pencil"></i>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li>
+          <button (click)="updatePost(post._id, newText)" class="dropdown-item">
+            Edit
+          </button>
+        </li>
+        <li>
+          <button (click)="deletePost(post._id)" class="dropdown-item">
+            Delete
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
-
   <div>
     <button type="button" class="btn">
       <svg
@@ -84,5 +106,60 @@
       Invia
     </button>
   </div>
+  <div
+    *ngIf="isComment"
+    class="sezione-aggiungi-commento d-flex align-items-center gap-2"
+  >
+    <div
+      class="profile-image border rounded-circle"
+      style="background-image: url('{{ profilo.image }}')"
+    ></div>
+    <div class="flex-grow d-flex rounded-pill border ps-4">
+      <input class="comment-input flex-grow" type="text" />
+      <button class="comment-button rounded-circle">
+        <i class="bi bi-send-plus"></i>
+      </button>
+
+      <button class="comment-button rounded-circle">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          data-supported-dps="24x24"
+          fill="currentColor"
+          class="mercado-match"
+          width="24"
+          height="24"
+          focusable="false"
+        >
+          <path
+            d="M8 10.5A1.5 1.5 0 119.5 12 1.5 1.5 0 018 10.5zm6.5 1.5a1.5 1.5 0 10-1.5-1.5 1.5 1.5 0 001.5 1.5zm7.5 0A10 10 0 1112 2a10 10 0 0110 10zm-2 0a8 8 0 10-8 8 8 8 0 008-8zm-8 4a6 6 0 01-4.24-1.76l-.71.76a7 7 0 009.89 0l-.71-.71A6 6 0 0112 16z"
+          ></path>
+        </svg>
+      </button>
+      <button class="comment-button rounded-circle">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          data-supported-dps="24x24"
+          fill="currentColor"
+          class="mercado-match"
+          width="24"
+          height="24"
+          focusable="false"
+        >
+          <path
+            d="M19 4H5a3 3 0 00-3 3v10a3 3 0 003 3h14a3 3 0 003-3V7a3 3 0 00-3-3zm1 13a1 1 0 01-.29.71L16 14l-2 2-6-6-4 4V7a1 1 0 011-1h14a1 1 0 011 1zm-2-7a2 2 0 11-2-2 2 2 0 012 2z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </div>
 </div>
 <!-- aggiungi html pre input commento -->
+<div *ngIf="isComment === true">
+  <app-comment
+    *ngFor="let comment of comments"
+    [comment]="comment"
+    [post]="post"
+  ></app-comment>
+</div>

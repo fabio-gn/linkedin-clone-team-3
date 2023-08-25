@@ -9,15 +9,15 @@ import { PostService } from 'src/app/post.service';
 @Component({
   selector: 'app-add-post',
   templateUrl: './add-post.component.html',
-  styleUrls: ['./add-post.component.scss']
+  styleUrls: ['./add-post.component.scss'],
 })
 export class AddPostComponent {
   constructor(
-    private srv:ServiceService,
+    private srv: ServiceService,
     private modalService: NgbModal,
     private fb: FormBuilder,
     private postSvc: PostService
-  ){}
+  ) {}
 
   profilo!: IProfile
   posts!: IPost[]
@@ -36,8 +36,7 @@ export class AddPostComponent {
   }
 
 
-
-  posta(){
+  posta() {
     this.postSvc.createPost(this.form.value).subscribe(() => {
       this.modalService.dismissAll()
       this.form.reset()
