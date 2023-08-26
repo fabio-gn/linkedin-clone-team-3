@@ -1,51 +1,55 @@
 <div id="post-section" class="container border rounded mt-3 p-3">
-  <div class="d-flex">
-    <div>
-      <img class="border rounded-circle me-2" [src]="post.user.image" alt="" />
+  <div class="d-flex justify-content-between">
+    <div class="d-flex gap-2">
+      <div>
+        <img
+          class="border rounded-circle me-2"
+          [src]="post.user.image"
+          alt="image"
+        />
+      </div>
+      <div>
+        <h5 class="card-name">
+          <a routerLink="/profile"
+            >{{ post.user.name }} {{ post.user.surname }}</a
+          >
+        </h5>
+        <p class="card-title">{{ post.user.title }}</p>
+      </div>
     </div>
-    <div>
-      <h5 class="card-name">
-        <a routerLink="/profile"
-          >{{ post.user.name }} {{ post.user.surname }}</a
-        >
-      </h5>
-      <p class="card-title">{{ post.user.title }}</p>
-    </div>
-  </div>
-  <div class="post-text">
-    <p>
-      {{ post.text }}
-    </p>
     <div *ngIf="post.user._id === profilo._id" class="dropdown">
-      <button
-        class="btn btn-secondary dropdown-toggle"
+      <p
+        class="dropdown-toggle no-arrow"
         type="button"
         id="dropdownMenuButton1"
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
         <i class="bi bi-pencil"></i>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      </p>
+      <ul
+        class="dropdown-menu dropdown-menu-end"
+        aria-labelledby="dropdownMenuButton1"
+      >
         <li>
           <button (click)="editPost(post._id)" class="dropdown-item">
-            Edit
+            Modifica
           </button>
         </li>
         <li>
           <button (click)="deletePost(post)" class="dropdown-item">
-            Delete
+            Elimina
           </button>
         </li>
       </ul>
     </div>
-
-    <!-- Utilizza la direttiva *ngIf per mostrare il campo di input e il pulsante "Save" solo quando la variabile isEditing è impostata su true -->
+  </div>
+  <div class="post-text mt-2">
+    <p>
+      {{ post.text }}
+    </p>
     <div *ngIf="isEditing">
-      <!-- Add an input field for editing the post's text -->
       <input [(ngModel)]="editedText" />
-
-      <!-- Add a save button for the post -->
       <button (click)="savePost(post._id, editedText)">Save</button>
     </div>
   </div>
@@ -175,11 +179,14 @@
   </div>
 
   <div *ngIf="isComment === true">
-    <p style="color: rgba(0, 0, 0, 0.6)">commenti</p>
+    <p style="color: rgba(0, 0, 0, 0.6)">
+      {{ comments.length ? "Commenti" : "Nessun commento" }}
+    </p>
     <app-comment
       *ngFor="let comment of comments"
       [comment]="comment"
       [post]="post"
+      (updatedComment)="updateComment($event)"
     ></app-comment>
   </div>
 </div>

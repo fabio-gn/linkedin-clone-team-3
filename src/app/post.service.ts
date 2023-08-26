@@ -36,7 +36,7 @@ export class PostService {
     return this.http.post<IPost>(this.apiUrl, body, { headers });
   }
 
-  updatePost(postId: string, post: { text: string }): Observable<any> {
+  updatePost(postId: string, post: Partial<IPost>): Observable<any> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authToken}`,
       'Content-Type': 'application/json',

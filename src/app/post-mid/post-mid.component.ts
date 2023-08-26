@@ -28,6 +28,7 @@ export class PostMidComponent implements OnInit {
   profilo!: IProfile;
   form!: FormGroup;
 
+
   constructor(
     private postService: PostService,
     private commentsvc: CommentService,
@@ -49,15 +50,14 @@ export class PostMidComponent implements OnInit {
     });
   }
 
-  updatePost(postId: string, text: string) {
-    console.log('updatePost called with postId:', postId, 'and text:', text);
-    this.postService.updatePost(postId, { text }).subscribe((updatedPost) => {
-      // Update the UI to display the new text of the post
-      this.post.text = updatedPost.text;
-
-      // Display a message to the user
+  updatePost(postId: string, editedText: string) {
+    const updatedPost: Partial<IPost> = {
+      text: editedText
+    }
+    this.postService.updatePost(postId, updatedPost).subscribe((updatedPost) => {
+      this.post = updatedPost;
       alert('Post updated successfully!');
-    });
+    })
   }
 
   deletePost(postId: IPost) {
@@ -94,20 +94,24 @@ export class PostMidComponent implements OnInit {
   }
 
   editPost(postId: string) {
-    // Set the editedText property to the current text of the post
     this.editedText = this.post.text;
-    // Imposta la variabile isEditing su true
     this.isEditing = true;
   }
 
   savePost(postId: string, editedText: string) {
-    // Send a request to your server to update the post's text in your database
-    this.postService
-      .updatePost(this.post._id, { text: this.editedText })
-      .subscribe((data) => {
-        console.log(data);
-        // Imposta la variabile isEditing su false
-        this.isEditing = false;
-      });
+    const updatedPost: Partial<IPost> = {
+      text: editedText,
+    }
+
+    this.postService.updatePost(postId, updatedPost).subscribe((data) => {
+      data.user = this.post.user
+      this.post = data;
+      this.isEditing = false;
+    });
   }
+
+  updateComment(comment:IComment){
+    this.comments = this.comments.filter(el => el._id !== comment._id)
+  }
+
 }

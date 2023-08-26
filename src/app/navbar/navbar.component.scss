@@ -29,6 +29,12 @@ input {
 li {
   height: 1.5em;
 }
+
+li:last-of-type{
+  width: 100px;
+  font-size: 0.7em;
+}
+
 svg,
 #profile-pic {
   height: 1.5em;
@@ -81,4 +87,11 @@ img {
 }
 header{
   margin-bottom: 0;
+}
+
+form{
+  width: 300px;
+  input{
+    width: 100%;
+  }
 }

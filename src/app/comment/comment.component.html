@@ -1,13 +1,41 @@
 <div class="d-flex gap-1 mt-2">
   <div
-      class="profile-image border rounded-circle mt-1"
-      style="background-image: url('../../assets/img/profile-placeholder.jpg')"
-    ></div>
-    <div class="comment-wrapper my-2 d-flex justify-content-between">
-      <div class="flex-grow">
-        <h6>{{ comment.author }}</h6>
-        <p>{{ comment.comment }}</p>
+    class="profile-image border rounded-circle mt-1"
+    style="background-image: url('../../assets/img/profile-placeholder.jpg')"
+  ></div>
+  <div class="comment-wrapper my-2 d-flex justify-content-between">
+    <div class="flex-grow">
+      <h6>{{ comment.author }}</h6>
+      <p>{{ comment.comment }}</p>
+      <div *ngIf="isEditing" class="d-flex pb-2">
+        <input class="form-control w-75 me-1" [(ngModel)]="editedComment" />
+        <button
+          class="btn btn-secondary fst-italic"
+          (click)="save(comment._id, editedComment)"
+        >
+          Salva
+        </button>
       </div>
-      <p><i class="bi bi-three-dots"></i></p>
     </div>
+    <div
+      class="dropdown"
+      *ngIf="
+        comment.author === profilo.username || comment.author === profilo.email
+      "
+    >
+      <p
+        class="dropdown-toggle no-arrow"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="bi bi-three-dots"></i>
+      </p>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li class="dropdown-item" (click)="editComment(comment.elementId)">
+          Modifica
+        </li>
+        <li class="dropdown-item" (click)="deleteComment(comment)">Elimina</li>
+      </ul>
+    </div>
+  </div>
 </div>

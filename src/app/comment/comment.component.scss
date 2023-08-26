@@ -22,3 +22,12 @@ p{
 .flex-grow{
   flex-grow: 1;
 }
+
+.dropdown-toggle.no-arrow::after {
+  display: none !important
+}
+
+i,li{
+  cursor: pointer;
+}
+

@@ -3,4 +3,5 @@ export interface IComment {
   rate: string;
   elementId: string;
   author: string;
+  _id:string
 }

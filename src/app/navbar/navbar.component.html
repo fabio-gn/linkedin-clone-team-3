@@ -1,32 +1,39 @@
-<header class="p-3  border-bottom">
+<header class="p-3 border-bottom">
   <div class="container mx-auto">
-    <div class="d-flex gap-2 align-items-center justify-content-center">
-      <a
-        routerLink="/"
-        class="d-flex align-items-center mb-lg-0 link-body-emphasis text-decoration-none"
-      >
-        <img id="logo" src="../../assets/img/LI-In-Bug.png" />
-      </a>
-      <form class="mb-lg-0 me-lg-3 d-none d-lg-block" role="search">
-        <input type="search" placeholder="Search..." aria-label="Search" />
-      </form>
-      <form
-        id="mobile-form"
-        class="mb-lg-0 me-lg-3 d-lg-none"
-        role="search"
-        *ngIf="search === true"
-      >
-        <div id="search-input" class="d-flex align-items-center gap-3">
-          <i (click)="searchToggle()" class="bi bi-search"></i>
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex gap-2">
+        <a
+          routerLink="/"
+          class="d-flex align-items-center mb-lg-0 link-body-emphasis text-decoration-none"
+        >
+          <img id="logo" src="../../assets/img/LI-In-Bug.png" />
+        </a>
+        <form class="mb-lg-0 me-lg-3 d-none d-lg-block" role="search">
           <input
-            id="mobile-search"
+            class="rounded"
             type="search"
-            placeholder="Cerca"
+            placeholder="Cerca..."
             aria-label="Search"
           />
-        </div>
-      </form>
-      <ul class="nav justify-content-center gap-3">
+        </form>
+        <form
+          id="mobile-form"
+          class="mb-lg-0 me-lg-3 d-lg-none"
+          role="search"
+          *ngIf="search === true"
+        >
+          <div id="search-input" class="d-flex align-items-center gap-3">
+            <i (click)="searchToggle()" class="bi bi-search"></i>
+            <input
+              id="mobile-search"
+              type="search"
+              placeholder="Cerca..."
+              aria-label="Search"
+            />
+          </div>
+        </form>
+      </div>
+      <ul class="nav justify-content-center gap-5">
         <li class="d-lg-none" (click)="searchToggle()" *ngIf="search !== true">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -108,16 +115,18 @@
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="mercado-match"
             width="16"
             height="16"
-            fill="currentColor"
-            class="bi bi-chat-right-dots-fill"
-            viewBox="0 0 16 16"
+            focusable="false"
           >
             <path
-              d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
-            /></svg
-          ><span class="d-none d-md-block">messaggistica</span>
+              d="M16 4H8a7 7 0 000 14h4v4l8.16-5.39A6.78 6.78 0 0023 11a7 7 0 00-7-7zm-8 8.25A1.25 1.25 0 119.25 11 1.25 1.25 0 018 12.25zm4 0A1.25 1.25 0 1113.25 11 1.25 1.25 0 0112 12.25zm4 0A1.25 1.25 0 1117.25 11 1.25 1.25 0 0116 12.25z"
+            ></path>
+          </svg>
+          <span class="d-none d-md-block">messaggistica</span>
         </li>
         <li
           class="d-flex flex-column align-items-center justify-content-between"
@@ -175,14 +184,11 @@
             /></svg
           ><span class="d-none d-md-block">per le aziende</span>
         </li>
-      </ul>
-
-      <ul class="dropdown-menu text-small">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><hr class="dropdown-divider" /></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
+        <li>
+          <p class="text-warning">
+            <ins>Fatti assumere più velocemente. Prova Premium gratis.</ins>
+          </p>
+        </li>
       </ul>
     </div>
   </div>
