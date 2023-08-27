@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { forkJoin } from 'rxjs';
 import { IProfile } from 'src/app/interfaces/profile';
@@ -12,10 +12,12 @@ import { ServiceService } from 'src/app/service.service';
 })
 export class MainProfileComponent {
 
+  userProfile!: IProfile
   profile!:IProfile
   selectedImage!:string
   selectedCoverImage!:string
   collegamenti!:IProfile[]
+
 
   constructor(
     private svc: ServiceService,
@@ -29,6 +31,7 @@ export class MainProfileComponent {
       this.svc.getAll()
     ]).subscribe(([profile, profiles]) => {
       this.profile = profile;
+      this.userProfile = profile;
       this.collegamenti = profiles;
       this.selectedImage= profile.image
     })
@@ -41,7 +44,9 @@ export class MainProfileComponent {
   }
 
   openModal(content: any) {
-    this.modalService.open(content);
+    if(this.userProfile.email === this.profile.email){
+      this.modalService.open(content);
+    }
   }
 
   handleCoverChange(event: Event) {

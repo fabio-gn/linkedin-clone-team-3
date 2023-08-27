@@ -8,7 +8,11 @@
         : 'url(https://legaltracking.com.mx/wp-content/uploads/2020/01/placeholder-1013x675.png)'
     "
   >
-    <div id="cover" class="circle-border">
+    <div
+      *ngIf="userProfile.username === profile.username"
+      id="cover"
+      class="circle-border"
+    >
       <label for="coverInput">
         <div class="circle">
           <svg
@@ -67,6 +71,7 @@
     <div class="d-flex justify-content-between">
       <h3 class="mb-1 mt-5 pt-3">{{ profile.name }} {{ profile.surname }}</h3>
       <i
+        *ngIf="userProfile.username === profile.username"
         class="bi bi-pencil fs-4 pt-5 ps-5 pe-3"
         (click)="openEditProfileModal(editProfileModal)"
       ></i>
